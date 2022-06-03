@@ -1,0 +1,77 @@
+.lightpurple{
+    color: #dcb0ee;
+}
+
+.jewel{
+    color: #a3bbf0
+}
+
+.stark{
+    color: #8e8484
+}
+
+.command{
+    color: #DA70D6;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 151px #ffa8fc;
+}
+
+.extra{
+    color:#C1E1C1
+}
+
+::selection{
+    background: rgb(89, 179, 89);
+    color: #0E0B16;
+}
+
+::-webkit-scrollbar{
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #000000; 
+    border-radius: 50px;
+  }
+   
+
+::-webkit-scrollbar-thumb {
+    background: rgb(222, 200, 121) ;
+    border-radius: 10px;
+  }
+  
+
+#wrapper {
+	border: 20px solid rgb(146, 132, 132);
+	width: 950px;
+	margin: 20px;
+}
+
+body {
+    background: #0E0B16;
+    color: #E7DFDD;
+    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+    margin: 30px;
+    overflow-x: hidden;
+}
+
+pre {
+    color: rgb(222, 200, 121)
+}
+input {
+    outline: none;
+    border: none;
+    resize: none;
+    background: #0E0B16;
+    color: #B1D8B7;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    padding-left: 0px;
+    width: 85%;
+
+    caret-color: #E7DFDD
+}
+

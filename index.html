@@ -1,0 +1,39 @@
+<!--This is a comment this is a comment this is a comment this is a comment this is a comment-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="this is a test">
+        <title>Nasan | Terminal</title>
+        <link rel="stylesheet" href="style.css">
+        <!--google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="terminal" style="margin-bottom: -1px">
+            <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan</span>:$ ~</span></p>
+            <pre id="banner">
+ _________  ________  ________  ________  _________       
+|\   ___  \|\   __  \|\   ____\|\   __  \|\   ___  \    
+\ \  \\ \  \ \  \|\  \ \  \___|\ \  \|\  \ \  \\ \  \   
+ \ \  \\ \  \ \   __  \ \_____  \ \   __  \ \  \\ \  \  
+  \ \  \\ \  \ \  \ \  \|____|\  \ \  \ \  \ \  \\ \  \ 
+   \ \__\\ \__\ \__\ \__\____\_\  \ \__\ \__\ \__\\ \__\
+    \|__| \|__|\|__|\|__|\_________\|__|\|__|\|__| \|__|
+                        \|_________|
+            </pre>
+            <p>Welcome to NasanTerminal v0.0.1<br>Type <span class="command">'help'</span> for a list of commands.</p>
+        </div>
+        <div id="commands" style="padding-bottom: 1px;">
+            <script src="main.js"></script>
+            <span>
+                <label for="user_cmd"><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan</span>:$ ~</span></label>
+                <input spellcheck="false" autocomplete="off" type="text" id="user_cmd" onkeypress="keypress(event)">
+            </span>
+        </div>
+    </body>
+</html>
