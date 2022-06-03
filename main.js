@@ -66,7 +66,7 @@ function commands(cmd, help, about, secret, _default, whois, _password, _banner)
 //MAIN
 function main(){
     var user_cmd = document.getElementById("user_cmd").value;
-    const cmdHelp = "<br>&nbsp&nbsp<span class=\"command\">'about'</span> &nbsp&nbsp;&nbsp <span class=\"extra\">who made this site?<br>&nbsp&nbsp<span class=\"command\">'whois'</span> &nbsp&nbsp;&nbsp what's a nasan?<br>&nbsp&nbsp<span class=\"command\">'secret'</span> &nbsp&nbsp ?<br>&nbsp&nbsp<span class=\"command\">'banner'</span> &nbsp&nbsp display header<br><br>";
+    const cmdHelp = "<br>&nbsp&nbsp<span class=\"command\">'about'</span> &nbsp&nbsp;&nbsp <span class=\"extra\">who made this site?<br>&nbsp&nbsp<span class=\"command\">'whois'</span> &nbsp&nbsp;&nbsp what's a nasan?<br>&nbsp&nbsp<span class=\"command\">'secret'</span> &nbsp&nbsp ?<br>&nbsp&nbsp<span class=\"command\">'banner'</span> &nbsp&nbsp display header<br>&nbsp&nbsp<span class=\"command\">'clear'</span> &nbsp&nbsp&nbsp clears the terminal<br><br>";
     const cmdAbout = "<br>Hi, I'm Nathaniel Macapinlac but most people know me as Nathan.<br>I'm a student studying Computer Engineering and Computer Science at NYU Tandon.<br><br>";
     const cmdSecret = "It's a secret ... even I don't know it.<br>I think there might be a password somewhere...<br><br>";
     const defaultMessage = "COMMAND NOT FOUND<br><br>";
