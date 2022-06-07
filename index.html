@@ -1,7 +1,7 @@
 <!--This is a comment this is a comment this is a comment this is a comment this is a comment-->
 
 <!DOCTYPE html>
-<html>
+<html onclick="getFocus()">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="this is a test">
@@ -13,9 +13,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
     </head>
 
-    <body>
-        <div id="terminal" style="margin-bottom: -1px">
-            <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan</span>:$ ~</span></p>
+    <body id = "main" onload='getFocus()' onclick="getFocus()">
+        <div onclick="getFocus()" id="terminal" style="margin-bottom: -1px">
+            <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~</span></p>
             <pre id="banner">
  _________  ________  ________  ________  _________       
 |\   ___  \|\   __  \|\   ____\|\   __  \|\   ___  \    
@@ -24,16 +24,16 @@
   \ \  \\ \  \ \  \ \  \|____|\  \ \  \ \  \ \  \\ \  \ 
    \ \__\\ \__\ \__\ \__\____\_\  \ \__\ \__\ \__\\ \__\
     \|__| \|__|\|__|\|__|\_________\|__|\|__|\|__| \|__|
-                        \|_________|
-            </pre>
-            <p>Welcome to NasanTerminal v0.0.1<br>Type <span class="command">'help'</span> for a list of commands.</p>
+                        \|_________|</pre>
+            <p style="padding-top:0px">Welcome to NasanTerminal v0.0.1<br>Type <span class="command">'help'</span> for a list of commands.</p>
         </div>
-        <div id="commands" style="padding-bottom: 1px;">
-            <script src="main.js"></script>
+        <div onclick="getFocus()" id="commands" style="padding-top: 1px;">
             <span>
-                <label for="user_cmd"><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan</span>:$ ~</span></label>
-                <input spellcheck="false" autocomplete="off" type="text" id="user_cmd" onkeypress="keypress(event)">
+                <label for="user_cmd"><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~&nbsp;</span></label>
+                <input style="padding-top: 0px" spellcheck="false" autocomplete="off" type="text" id="user_cmd" onkeypress="keypress(event)" onkeydown = "historyScroll(event)"></input>
             </span>
         </div>
+    <script src="main.js"></script>
+    <script src="variables.js"></script>
     </body>
 </html>
