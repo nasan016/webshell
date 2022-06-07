@@ -11,6 +11,6 @@ errorMsg = "COMMAND NOT FOUND<br><br>";
 
 whoami = '<br>&nbsp;&nbsp;github &nbsp;&nbsp;&nbsp;&nbsp;<a href="' + github + '" target="_blank">github/nasan016</a><br>&nbsp;&nbsp;linkedin &nbsp;&nbsp;<a href="' + linkedin + '" target="_blank">linkedin/nathanielmacapinlac</a><br><br>';
 
-password = "Sorry, there isn't any secret yet..."
+password = "Sorry, there isn't any secret yet...<br><br>"
 
 banner =  "<pre> _________  ________  ________  ________  _________<br>|\\   ___  \\|\\   __  \\|\\   ____\\|\\   __  \\|\\   ___  \\ <br>\\ \\  \\\\ \\  \\ \\  \\|\\  \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\ \\  \\<br> \\ \\  \\\\ \\  \\ \\   __  \\ \\_____  \\ \\   __  \\ \\  \\\\ \\  \\<br>  \\ \\  \\\\ \\  \\ \\  \\ \\  \\|____|\\  \\ \\  \\ \\  \\ \\  \\\\ \\  \\<br>   \\ \\__\\\\ \\__\\ \\__\\ \\__\\____\\_\\  \\ \\__\\ \\__\\ \\__\\\\ \\__\\<br>    \\|__| \\|__|\\|__|\\|__|\\_________\\|__|\\|__|\\|__| \\|__|<br>                        \\|_________|</pre><p>Welcome to NasanTerminal v0.0.1<br>Type <span class=\"command\">'help'</span> for a list of commands.</p>"
