@@ -56,6 +56,7 @@ function scroll_to_bottom(){
 
 function commands(cmd){
     const userInput = '<span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~</span><span class="evagreen"> ' + cmd + '</span><br>';
+    cmd = cmd.toLowerCase();
     if (cmd === 'clear'){
         terminal.innerHTML = '';
     } else if (whiteSpace(cmd)){
