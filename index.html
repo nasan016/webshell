@@ -1,39 +1,29 @@
-<!--This is a comment this is a comment this is a comment this is a comment this is a comment-->
-
 <!DOCTYPE html>
-<html onclick="getFocus()">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="this is a test">
-        <title>Nasan | Terminal</title>
-        <link rel="stylesheet" href="style.css">
-        <!--google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
-    </head>
-
-    <body id = "main" onload='getFocus()' onclick="getFocus()">
-        <div onclick="getFocus()" id="terminal" style="margin-bottom: -1px">
-            <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~</span></p>
-            <pre id="banner">
- _________  ________  ________  ________  _________       
-|\   ___  \|\   __  \|\   ____\|\   __  \|\   ___  \    
-\ \  \\ \  \ \  \|\  \ \  \___|\ \  \|\  \ \  \\ \  \   
- \ \  \\ \  \ \   __  \ \_____  \ \   __  \ \  \\ \  \  
-  \ \  \\ \  \ \  \ \  \|____|\  \ \  \ \  \ \  \\ \  \ 
-   \ \__\\ \__\ \__\ \__\____\_\  \ \__\ \__\ \__\\ \__\
-    \|__| \|__|\|__|\|__|\_________\|__|\|__|\|__| \|__|
-                        \|_________|</pre>
-            <p style="padding-top:0px">Welcome to NasanTerminal v0.0.1<br>Type <span class="command">'help'</span> for a list of commands.</p>
-        </div>
-        <div onclick="getFocus()" id="commands" style="padding-top: 1px;">
-            <span>
-                <label for="user_cmd"><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~&nbsp;</span></label>
-                <input style="padding-top: 0px" spellcheck="false" autocomplete="off" type="text" id="user_cmd" onkeypress="keypress(event)" onkeydown = "historyScroll(event)"></input>
-            </span>
-        </div>
-    <script src="main.js"></script>
-    <script src="variables.js"></script>
-    </body>
+<html onclick="getFocus()" onload="getFocus()">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>nasan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="writeLines(banner, '', 50)">
+    <div class="stuff">
+        <main id="main" class="inner fullheight">
+            <div id="terminal">
+                <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~ </span></p>
+                <a id="writingLines"></a>
+            </div>
+            <div id="commands">
+            <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~ </span>
+                <input spellcheck="false" autocomplete="off" id="user_cmd" onkeypress="enterCommand(event)"></input>
+            </p>
+            </div>
+        </main>
+    </div>
+    <script src="\js\variables.js"></script>
+    <script src="\js\main.js"></script>
+</body>
 </html>

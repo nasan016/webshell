@@ -1,3 +1,8 @@
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
 .lightpurple{
     color: #a877c8;
 }
@@ -14,88 +19,90 @@
     color: #b1f25c
 }
 
-.command{
-    color: #DA70D6;
-    text-shadow:
-    0 0 7px #fff,
-    0 0 151px #ffa8fc;
+.nothing{
+    animation: typing 0 steps(30, end);
 }
 
-.extra{
-    color:#C1E1C1
-}
-
-::selection{
-    background: rgb(89, 179, 89);
-    color: #0E0B16;
-}
-
-::-webkit-scrollbar{
-    width: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #000000; 
-    border-radius: 50px;
-  }
-   
-
-::-webkit-scrollbar-thumb {
-    background: rgb(222, 200, 121) ;
-    border-radius: 10px;
-  }
-  
-
-html {
-    font-size: 15px;
-    width: 100%
-}
-
-#wrapper{
-    margin: 20px;
-    width: 950px;
-}
-body {
-    background: #0E0B16;
-    color: #E7DFDD;
-    font-size: 100%;
-    font-family: 'Roboto Mono', monospace;
-    margin: 30px;
-    overflow-x: hidden;
-    position: absolute;
-    width: inherit;
-    padding-bottom: 40px
-}
-
-pre {
+.brightyellow{
     color: #f7bb2a;
 }
 
-a {
+.ascii{
+    font-family: 'Roboto Mono';
+    padding: 0;
+}
+
+.fullheight{
+    height: 100%
+}
+
+.inner{
+    padding: 50px 50px 50px 50px;
+}
+
+.stuff{
+    height: 100%;
+    overflow: auto;
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#b1f25c;
+    border-radius: 5px;
+}
+
+main{
+    display: block;
+}
+
+pre{
+    margin: 0;
+}
+
+a{
     color: #a877c8;
-    position: absolute;
-    
 }
 
 a:hover{
     background-color:rgb(89, 179, 89);
     color: #0E0B16;
-
 }
 
-input {
-    display: inline;
-    position: absolute;
+html{
+    font-size: 15px;
+    height: 100%;
+    overflow: auto;
+    display: block;
+}
+
+body{
+    font-family: 'Roboto Mono', monospace;
+    background-color: #0E0B16;
+    color: #E7DFDD;
+}
+
+p{
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 0.5s steps(30, end);
+  }
+
+input{ 
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
     outline: none;
     overflow: hidden;
     border: none;
     resize: none;
-    background: #0E0B16;
-    color: #b1f25c;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 100%;
+    padding-bottom: 5px;
     padding-left: 0px;
-    width: 80%;
-    caret-color: #E7DFDD
+    padding-top: 0px;
+    background-color: #0E0B16;
+    color: #b1f25c;
 }
