@@ -1,7 +1,12 @@
-const terminal = document.getElementById("terminal");
-const cmdLine = document.getElementById("user_cmd");
+var terminal = document.getElementById("terminal");
+var cmdLine = document.getElementById("user_cmd");
+var commandDiv = document.getElementById("commands");
 let terminalLines = document.getElementById("writingLines");
 
+var message = ['Incorrect password.<br><br>'];
+
+let flag = false;
+let counter = 0;
 const history = [];
 var userInput = "";
 
@@ -9,10 +14,10 @@ function whiteSpace(cmd){
     return cmd.trim().length === 0;
 }
 
-function openNewTab(link){
+function openNewTab(link, time){
     setTimeout(function(){
         window.open(link, '_blank');
-    }, 500);
+    }, time);
 }
 
 function scroll_to_bottom(){
@@ -20,7 +25,7 @@ function scroll_to_bottom(){
 }
 
 function getFocus(){
-    cmdLine.focus();
+    cmdLine.focus();    
 }
 
 function enterCommand(event){
@@ -60,6 +65,38 @@ function writeLines(cmd, style, time){
     });
 }
 
+function password(event){
+    passwordInput = document.getElementById("enterpassword");
+    if(event.key === "Enter"){
+        var passcode = passwordInput.value;
+        passwordInput.value = ''
+        if(passcode === '060301'){
+            message = congratulationsMessage;
+            passwordInput.remove();
+            flag = true;
+        } else if(passcode === 'password'){
+            message = squidMessage;
+            openNewTab(squid, 1200);
+            passwordInput.remove();
+            flag = true;
+        }else{
+            counter++
+            if(counter === 3){
+                passwordInput.remove();
+                flag = true;
+            }
+        }
+    }
+
+    if(flag){
+        user_cmd.disabled = false;
+        writeLines(message, '', 50);
+        counter = 0;
+        flag = false;
+        message = ['Incorrect password.<br><br>'];
+    }
+}
+
 function switchCase(cmd){
     if(whiteSpace(cmd)){}
     else{
@@ -84,12 +121,13 @@ function switchCase(cmd){
             break;
         case 'repo':
             displayText("opening GitHub repository ... <br><br>", 1);
-            openNewTab(sourceLink);
+            openNewTab(sourceLink, 500);
             break;
         case 'history':
             writeLines(history, 50);
             break;
         case 'sudo':
+            user_cmd.disabled = true;
             writeLines(sudo, 50);
             break;
         default:
@@ -99,3 +137,5 @@ function switchCase(cmd){
     }
 }
 
+console.log("🥸 Password: 060301")
+console.log("🦑 dont guess 'password'...")

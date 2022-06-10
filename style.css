@@ -3,6 +3,13 @@
     to { width: 100% }
 }
 
+.command{
+    color: #DA70D6;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 151px #ffa8fc;
+}
+
 .lightpurple{
     color: #a877c8;
 }
@@ -105,4 +112,5 @@ input{
     padding-top: 0px;
     background-color: #0E0B16;
     color: #b1f25c;
+    caret-color: #E7DFDD;
 }
