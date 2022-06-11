@@ -1,2 +1,2 @@
-# [NasanTerminal 🖥️](https://nasan.dev/)
-personal terminal website
+# [nasan | Terminal 🖥️](https://nasan.dev/)
+A personal terminal styled website.
