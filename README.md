@@ -1,2 +1,2 @@
-# nasanterminal
+# NasanTerminal 🖥️
 personal terminal website
