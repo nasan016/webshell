@@ -3,6 +3,17 @@
     to { width: 100% }
 }
 
+.lightgreen{
+    color: #F7BB2A;
+}
+
+.hidden {
+    display: none;
+}
+
+.displayblock{
+    display:block;
+}
 .command{
     color: #DA70D6;
     text-shadow:
@@ -89,7 +100,7 @@ html{
 body{
     font-family: 'Roboto Mono', monospace;
     background-color: #0E0B16;
-    color: #E7DFDD;
+    color: #e4e8f8;
 }
 
 p{

@@ -44,17 +44,19 @@ whoami = [
 ];
 
 sudo = [
-  "Enter password for nasan: <input type='password' spellcheck='false' autocomplete='off' id='enterpassword' onkeypress='password(event)'></input><br><br>"
+  "[sudo] password for nasan: <input type='password' spellcheck='false' autocomplete='off' id='enterpassword' onkeypress='password(event)'></input><br><br>"
 ];
 
 help = [
     "<br>",
-    '<span class="command">\'about\'</span>          Who made this website?',
-    '<span class="command">\'whoami\'</span>         What is a nasan?',
-    '<span class="command">\'sudo\'</span>           I forgot the password.',
-    '<span class="command">\'repo\'</span>           View the GitHub repository.',
-    '<span class="command">\'banner\'</span>         Display the header.',
-    '<span class="command">\'clear\'</span>          Clear terminal.',
+    '<span class="command">  \'about\'</span>          Who made this website?',
+    '<span class="command">  \'whoami\'</span>         What is a nasan?',
+    '<span class="command">  \'sudo\'</span>           I forgot the password.',
+    '<span class="command">  \'repo\'</span>           View the GitHub repository.',
+    '<span class="command">  \'banner\'</span>         Display the header.',
+    '<span class="command">  \'clear\'</span>          Clear terminal.',
+    '<br>',
+    'Use <span class="lightgreen">[↑][↓]</span> to scroll through recently used commands.',
     "<br>"
   ];
 

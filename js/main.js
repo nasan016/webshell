@@ -6,9 +6,38 @@ let terminalLines = document.getElementById("writingLines");
 var message = ['Incorrect password.<br><br>'];
 
 let flag = false;
+let historyTracker = -1;
 let counter = 0;
 const history = [];
 var userInput = "";
+
+function historyScroll(event){
+    const key = event.key
+    if(key === "ArrowUp"){
+        if(history.length != 0 && historyTracker != history.length){
+            if(historyTracker != history.length - 1){
+                historyTracker++;
+            }
+            cmdLine.value = history[historyTracker];
+        }
+        event.preventDefault();
+
+    } else if(key === "ArrowDown"){
+        if(historyTracker != -1 && history.length != 0){
+            if(historyTracker != -1){
+                historyTracker--;
+            }
+            cmdLine.value = history[historyTracker];
+        }
+        event.preventDefault();
+    }
+    if (key === "ArrowDown" && historyTracker === -1){
+        cmdLine.value = '';
+    }
+    if(key === "Tab"){
+        event.preventDefault()
+    }
+}
 
 function whiteSpace(cmd){
     return cmd.trim().length === 0;
@@ -90,6 +119,7 @@ function password(event){
 
     if(flag){
         user_cmd.disabled = false;
+        commandDiv.className = '';
         writeLines(message, '', 50);
         counter = 0;
         flag = false;
@@ -123,10 +153,8 @@ function switchCase(cmd){
             displayText("opening GitHub repository ... <br><br>", 1);
             openNewTab(sourceLink, 500);
             break;
-        case 'history':
-            writeLines(history, 50);
-            break;
         case 'sudo':
+            commandDiv.className = 'hidden';
             user_cmd.disabled = true;
             writeLines(sudo, 50);
             break;
