@@ -8,7 +8,6 @@ squid = 'https://www.youtube.com/watch?v=J2UyOTS3UCE'
 command_line = '<p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~ </span><input spellcheck="false" autocomplete="off" id="user_cmd" onkeypress="enterCommand(event)"></input></p>';
 
 congratulationsMessage = [
-  "<br>",
   "Congratulations, you found the password!",
   "Good Job! I'm proud of you!",
   "You're the best! Even I couldn't do it!",
@@ -17,7 +16,6 @@ congratulationsMessage = [
 ];
 
 squidMessage = [
-  "<br>",
   "You tried...",
   "Here's 2 hours of squid to relax/study/work to. 🦑",
   "<br>"
@@ -56,6 +54,7 @@ help = [
     '<span class="command">  \'banner\'</span>         Display the header.',
     '<span class="command">  \'clear\'</span>          Clear terminal.',
     '<br>',
+    'Use <span class="lightgreen">[Tab]</span> to trigger completion.',
     'Use <span class="lightgreen">[↑][↓]</span> to scroll through recently used commands.',
     "<br>"
   ];
@@ -82,7 +81,7 @@ banner = [
 "<pre class='brightyellow'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\|_________|</pre>",
 "<br>",
 "Welcome to NasanTerminal v0.0.2",
-"Type <span class=\"command\">'help'</span> for a list of commands.",
+"Type <span class=\"command\">'help'</span> for a list of available commands.",
 "Type <span class=\"command\">'repo'</span> to view the GitHub repository or click <a href=\"" + sourceLink + "\" target=\"_blank\">here</a>.",
 "<br>"
 ];

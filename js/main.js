@@ -11,7 +11,19 @@ let counter = 0;
 const history = [];
 var userInput = "";
 
+function tabCompletion(tab_cmd){
+    for(let i = 0; i < commandList.length; i++){
+        if(commandList[i].includes(tab_cmd) && tab_cmd[0] === commandList[i][0]){
+            cmdLine.value = commandList[i];
+            break;
+        } else{
+            continue;
+        }
+    }
+}
+
 function historyScroll(event){
+    let tab_cmd = '';
     const key = event.key
     if(key === "ArrowUp"){
         if(history.length != 0 && historyTracker != history.length){
@@ -35,7 +47,9 @@ function historyScroll(event){
         cmdLine.value = '';
     }
     if(key === "Tab"){
-        event.preventDefault()
+        tab_cmd = cmdLine.value;
+        tabCompletion(tab_cmd);
+        event.preventDefault();
     }
 }
 
