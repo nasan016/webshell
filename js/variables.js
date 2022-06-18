@@ -41,10 +41,6 @@ whoami = [
   '<br>'
 ];
 
-sudo = [
-  "[sudo] password for nasan: <input type='password' spellcheck='false' autocomplete='off' id='enterpassword' onkeypress='password(event)'></input><br><br>"
-];
-
 help = [
     "<br>",
     '<span class="command">  \'about\'</span>          Who made this website?',

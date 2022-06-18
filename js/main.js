@@ -1,10 +1,13 @@
 var terminal = document.getElementById("terminal");
 var cmdLine = document.getElementById("user_cmd");
 var commandDiv = document.getElementById("commands");
+var passwordLine = document.getElementById("passwordLine")
 let terminalLines = document.getElementById("writingLines");
+let passwordInput = document.getElementById("enterpassword");
 
 var message = ['Incorrect password.<br><br>'];
 
+let password_input_or_cmd_input = true
 let flag = false;
 let historyTracker = -1;
 let counter = 0;
@@ -68,7 +71,11 @@ function scroll_to_bottom(){
 }
 
 function getFocus(){
-    cmdLine.focus();    
+    if(password_input_or_cmd_input){
+        cmdLine.focus(); 
+    } else{
+        passwordInput.focus();
+    }
 }
 
 function enterCommand(event){
@@ -109,35 +116,37 @@ function writeLines(cmd, style, time){
 }
 
 function password(event){
-    passwordInput = document.getElementById("enterpassword");
     if(event.key === "Enter"){
         var passcode = passwordInput.value;
         passwordInput.value = ''
         if(passcode === '060301'){
             message = congratulationsMessage;
-            passwordInput.remove();
+            passwordLine.className = 'hidden'
             flag = true;
         } else if(passcode === 'password'){
             message = squidMessage;
             openNewTab(squid, 1200);
-            passwordInput.remove();
+            passwordLine.className = 'hidden'
             flag = true;
         }else{
             counter++
             if(counter === 3){
-                passwordInput.remove();
+                passwordLine.className = 'hidden'
                 flag = true;
             }
         }
     }
 
     if(flag){
+        displayText('[sudo] password for nasan: <br><br> ', 'nothing', 0)
         user_cmd.disabled = false;
         commandDiv.className = '';
         writeLines(message, '', 50);
         counter = 0;
         flag = false;
+        password_input_or_cmd_input = true
         message = ['Incorrect password.<br><br>'];
+        cmdLine.focus()
     }
 }
 
@@ -170,7 +179,9 @@ function switchCase(cmd){
         case 'sudo':
             commandDiv.className = 'hidden';
             user_cmd.disabled = true;
-            writeLines(sudo, 50);
+            passwordLine.className = ''
+            password_input_or_cmd_input = false;
+            passwordInput.focus()
             break;
         default:
             writeLines(defaultMessage, 50);
