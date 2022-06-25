@@ -64,8 +64,8 @@
 }
 
 ::-webkit-scrollbar{
-    width: 2px;
-    height: 10px;
+    width: 0.5em;
+    height: 10em;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -91,7 +91,6 @@ a:hover{
 }
 
 html{
-    font-size: 15px;
     height: 100%;
     overflow: auto;
     display: block;
@@ -101,6 +100,7 @@ body{
     font-family: 'Roboto Mono', monospace;
     background-color: #0E0B16;
     color: #e4e8f8;
+    font-size: calc(10px + 0.33vw);
 }
 
 p{
@@ -109,11 +109,12 @@ p{
     overflow: hidden;
     white-space: nowrap;
     animation: typing 0.5s steps(30, end);
+    font-size: 1em;
   }
 
 input{ 
     font-family: 'Roboto Mono', monospace;
-    font-size: 15px;
+    font-size: 1em;
     outline: none;
     overflow: hidden;
     border: none;
@@ -124,4 +125,14 @@ input{
     background-color: #0E0B16;
     color: #b1f25c;
     caret-color: #E7DFDD;
+}
+
+@media (max-width: 600px){
+    .inner{
+        padding: 2px 2px 2px 2px;
+    }
+
+    body{
+        font-size: 9px;
+    }
 }

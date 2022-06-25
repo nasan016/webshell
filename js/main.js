@@ -54,6 +54,9 @@ function historyScroll(event){
         tabCompletion(tab_cmd);
         event.preventDefault();
     }
+    if(key === "Escape"){
+        cmdLine.value = ''
+    }
 }
 
 function whiteSpace(cmd){
@@ -116,6 +119,9 @@ function writeLines(cmd, style, time){
 }
 
 function password(event){
+    if(event.key === "Escape"){
+        passwordInput.value = ''
+    }
     if(event.key === "Enter"){
         var passcode = passwordInput.value;
         passwordInput.value = ''

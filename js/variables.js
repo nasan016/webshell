@@ -51,16 +51,18 @@ help = [
     '<span class="command">  \'clear\'</span>          Clear terminal.',
     '<br>',
     'Use <span class="lightgreen">[Tab]</span> to trigger completion.',
+    'Use <span class="lightgreen">[Esc]</span> to clear the input line.',
     'Use <span class="lightgreen">[↑][↓]</span> to scroll through recently used commands.',
     "<br>"
   ];
 
 about = [
     "<br>",
-    "Hi, I'm Nathaniel Macapinlac but most people call me Nathan.",
+    "Hi, I'm Nathaniel Macapinlac but most people call",
+    "me Nathan.",
     "<br>",
-    "I'm a student studying Computer Engineering and Computer Science",
-    "at NYU Tandon.",
+    "I'm a student studying Computer Engineering and",
+    "Computer Science at NYU Tandon.",
     "<br>",
     "Welcome to my interactive terminal!",
     "<br>"
