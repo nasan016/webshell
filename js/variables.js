@@ -78,7 +78,7 @@ banner = [
 "<pre class='brightyellow'>&nbsp;&nbsp;&nbsp;&nbsp;\\|__| \\|__|\\|__|\\|__|\\_________\\|__|\\|__|\\|__| \\|__|</span>",
 "<pre class='brightyellow'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\|_________|</pre>",
 "<br>",
-"Welcome to NasanTerminal v0.0.2",
+"Welcome to NasanTerminal v0.1.0",
 "Type <span class=\"command\">'help'</span> for a list of available commands.",
 "Type <span class=\"command\">'repo'</span> to view the GitHub repository or click <a href=\"" + sourceLink + "\" target=\"_blank\">here</a>.",
 "<br>"
