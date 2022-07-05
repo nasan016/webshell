@@ -107,7 +107,7 @@ p{
     margin: 0;
     overflow: hidden;
     white-space: nowrap;
-    animation: typing 1s steps(30, end);
+    animation: typing 0.5s steps(30, end);
     font-size: 1em;
   }
 
