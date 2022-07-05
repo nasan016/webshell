@@ -189,6 +189,10 @@ function switchCase(cmd){
             password_input_or_cmd_input = false;
             passwordInput.focus()
             break;
+        case 'gui':
+            displayText("loading GUI ... <br><br>", 1);
+            openNewTab(website, 500);
+            break;
         default:
             writeLines(defaultMessage, 50);
             break;

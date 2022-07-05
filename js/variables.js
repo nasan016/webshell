@@ -2,6 +2,7 @@ const sourceLink = 'https://github.com/nasan016/nasanterminal';
 const github = "https://github.com/nasan016";
 const linkedin = "https://www.linkedin.com/in/nathanielmacapinlac/";
 const email = 'nlm8841@nyu.edu'
+const website = 'https://nasan.me/'
 
 squid = 'https://www.youtube.com/watch?v=J2UyOTS3UCE'
 
@@ -28,7 +29,8 @@ commandList = [
   'sudo',
   'repo',
   'banner',
-  'clear'
+  'clear',
+  'gui'
 ];
 
 whoami = [
@@ -81,6 +83,7 @@ banner = [
 "Welcome to NasanTerminal v0.1.0",
 "Type <span class=\"command\">'help'</span> for a list of available commands.",
 "Type <span class=\"command\">'repo'</span> to view the GitHub repository or click <a href=\"" + sourceLink + "\" target=\"_blank\">here</a>.",
+"Type <span class=\"command\">'gui'</span> for a simplified version of this website or click <a href=\"" + website + "\" target=\" _blank\">here</a>",
 "<br>"
 ];
 
