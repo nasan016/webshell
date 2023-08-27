@@ -2,7 +2,7 @@ const sourceLink = 'https://github.com/nasan016/nasanterminal';
 const github = "https://github.com/nasan016";
 const linkedin = "https://www.linkedin.com/in/nathanielmacapinlac/";
 const email = 'nlm8841@nyu.edu'
-const website = 'https://nasan.me/'
+const website = 'https://nasan016.github.io/nasan.me/'
 
 squid = 'https://www.youtube.com/watch?v=J2UyOTS3UCE'
 
