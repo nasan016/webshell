@@ -1,35 +1,13 @@
-<!DOCTYPE html>
-<html onclick="getFocus()" onload="getFocus()">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Terminal Styled Website">
-    <meta name="author" content="Nathaniel Macapinlac">
-    <title>nasan | Terminal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d5effce557.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="./assets/terminal.png">
-    <link rel="stylesheet" href="./assets/style.css">
-</head>
-<body onload="writeLines(banner, '', 50)">
-    <div class="stuff">
-        <main id="main" class="inner fullheight">
-            <div id="terminal">
-                <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~ </span></p>
-                <a id="writingLines"></a>
-            </div>
-            <p id="passwordLine" class="hidden">[sudo] password for nasan: <input type='password' spellcheck='false' autocomplete='off' id='enterpassword' onkeypress='password(event)'></input><br><br></p>
-            <div id="commands">
-            <p><span class="stark"><span class="lightpurple">guest</span>@<span class="jewel">nasan.dev</span>:$ ~ </span>
-                <input spellcheck="false" autocomplete="off" id="user_cmd" onkeydown="historyScroll(event)" onkeypress="enterCommand(event)"></input>
-            </p>
-            </div>
-        </main>
-    </div>
-    <script src=".\js\variables.js"></script>
-    <script src=".\js\main.js"></script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
