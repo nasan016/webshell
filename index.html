@@ -1,13 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal</title>
+</head>
+
+<body>
+  <main>
+    <div id="terminal">
+      <!-- command output will be appended above #write-lines-->
+      <a id="write-lines"></a>
+    </div>
+    <div id="input-line">
+      <p>
+        guest @ nasan.dev
+        <input onkeypress="userInputHandler(event)" id="user-input" />
+      </p>
+    </div>
+  </main>
+</body>
+
+<script src="./src/main.ts"></script>
+
 </html>
