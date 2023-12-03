@@ -12,5 +12,8 @@
     "@types/js-yaml": "^4.0.9",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
   }
 }

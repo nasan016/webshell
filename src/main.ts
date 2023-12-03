@@ -42,9 +42,11 @@ function enterKey() {
   just insert a prompt before #write-lines
   */
   if (userInput.length !== 0) {
-    console.log("Hello World!"); //please remember to remove this nathan
+    CREATEBANNER().forEach((ele) => {
+      WRITELINES.innerHTML += ele
+    })
   }
-
+  
   USERINPUT.value = resetInput;
   userInput = resetInput; 
 }
