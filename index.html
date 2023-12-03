@@ -1,24 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" onclick="FOCUS()">
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/css/css-reset.css">
+  <link rel="stylesheet" href="src/css/style.css">
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminal</title>
 </head>
 
-<body>
-  <main>
+<body onload="FOCUS()">
+  <main id="main">
     <div id="terminal">
-      <!-- command output will be appended above #write-lines-->
+      <!-- command output will be inserted before #write-lines-->
       <a id="write-lines"></a>
     </div>
     <div id="input-line">
       <p>
-        guest @ nasan.dev
-        <input onkeypress="userInputHandler(event)" id="user-input" />
+        <span id="prompt">guest @ nasan.dev:$ ~</span>
+        <input onkeydown="userInputHandler(event)" id="user-input" />
       </p>
     </div>
   </main>

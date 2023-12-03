@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+}
+
+html {
+  overflow: auto;
+}
+
+body {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+main {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  border: solid 1px;
+  overflow: auto;
+}
