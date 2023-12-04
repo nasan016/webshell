@@ -33,20 +33,43 @@ function enterKey() {
   userInput = USERINPUT.value;
   userInput = userInput.trim();
 
-  const p = document.createElement("p");
-  p.innerHTML = PROMPT.innerHTML.concat(" ", userInput);  
-  WRITELINES.parentNode!.insertBefore(p, WRITELINES);
+  const DIV = document.createElement("div");
+  DIV.innerHTML = PROMPT.innerHTML.concat(" ", userInput);  
+  WRITELINES.parentNode!.insertBefore(DIV, WRITELINES);
 
   /*
   if input is empty or a collection of spaces, 
   just insert a prompt before #write-lines
   */
   if (userInput.length !== 0) {
-    CREATEBANNER().forEach((ele) => {
-      WRITELINES.innerHTML += ele
-    })
-  }
+      commandHandler(userInput)
+    }
   
   USERINPUT.value = resetInput;
   userInput = resetInput; 
+}
+
+function commandHandler(input : string) {
+  switch(input) {
+    case 'banner':
+      writeLines(BANNER)
+      break;
+    default:
+      break;
+  }  
+}
+
+function writeLines(message : string[]) {
+  message.forEach((item, idx) => {
+    displayText(item, idx)
+  }) 
+}
+
+function displayText(item : string, idx : number) {
+  setTimeout(() => {
+    const P = document.createElement("p")
+    P.innerHTML = item
+    WRITELINES.parentNode!.insertBefore(P, WRITELINES);
+    SCROLLTOBOTTOM()
+  }, 50 * idx)
 }

@@ -8,43 +8,32 @@ const BANNEROBJ = {
     "╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝",
   ],
   "greeting": "Welcome to WebShell v1.0.0",
-  "type": {
-    "help": "for a list of available commands.",
-    "repo": "to view the GitHub repository or click",
-    "link_text": "here.",
-    "link": "https://github.com/nasan016/nasanterminal"
-  }, 
+  "repolink": "github.com/nasan016/nasanterminal"
 }
 
 const CREATEBANNER = () : string[] => {
-  const PRETAG = "<pre>";
-  const PRETAGEND = "</pre>";
-
-  const ATAG = "<a target='_blank' href='" + BANNEROBJ.type.link + "'>"
-  const ATAGEND = "</a>"
-
   const banner : string[] = [];
-
+  banner.push("<br>")
   BANNEROBJ.ascii.forEach((ele) => {
-    let eleToPush = "";
-    eleToPush += PRETAG;
-
+    let bannerString = "";
     //this is for the ascii art
     for (let i = 0; i < ele.length; i++) {
       if (ele[i] === " ") {
-        eleToPush += "&nbsp;";
+        bannerString += "&nbsp;";
       } else {
-        eleToPush += ele[i];
+        bannerString += ele[i];
       }
     }
-
-    eleToPush += PRETAGEND
-    banner.push(eleToPush)
-  });
-
+    
+    let eleToPush = `<pre>${bannerString}</pre>`;
+    banner.push(eleToPush);
+  });  
+  banner.push("<br>")
   banner.push(BANNEROBJ.greeting)
-  return banner
+  banner.push("Type 'help' for a list of all available commands.")
+  banner.push("Type 'repo' to view the GitHub repository or click here.")
+  banner.push("<br>")
+  return banner;
 }
 
 const BANNER = CREATEBANNER()
-console.log(CREATEBANNER())

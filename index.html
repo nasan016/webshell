@@ -10,17 +10,35 @@
   <title>WebShell</title>
 </head>
 
-<body onload="FOCUS()">
+<body onload="writeLines(BANNER)">
   <main id="main">
+    <div id="bars">
+      <div id="bar-1">WebShell.exe</div>
+      <div id="bar-2"></div>
+      <div id="bar-3"></div>
+      <div id="bar-4"></div>
+      <div id="bar-5"></div>
+    </div>
+    <div>&nbsp;</div>
     <div id="terminal">
+      <div>
+        <span id="prompt"><span style="color: var(--prompt-1)">guest</span><span
+            style="color: var(--prompt-default)">@</span><span style="color: var(--prompt-2)">nasan.dev</span><span
+            style="color: var(--prompt-default)">:$ ~</span>
+        </span>
+      </div>
       <!-- command output will be inserted before #write-lines-->
       <a id="write-lines"></a>
     </div>
     <div id="input-line">
-      <p>
-        <span id="prompt">guest @ nasan.dev:$ ~</span>
-        <input onkeydown="userInputHandler(event)" id="user-input" />
-      </p>
+      <div>
+        <span id="prompt"><span style="color: var(--prompt-1)">guest</span><span
+            style="color: var(--prompt-default)">@</span><span style="color: var(--prompt-2)">nasan.dev</span><span
+            style="color: var(--prompt-default)">:$ ~</span>
+        </span>
+        <input onload="FOCUS()" onkeydown="userInputHandler(event)" id="user-input" />
+      </div>
+      <div>&nbsp;</div>
     </div>
   </main>
 </body>

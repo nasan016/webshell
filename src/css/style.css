@@ -1,12 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Pixelify+Sans&display=swap');
 
 :root {
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: 300;
+  --bg: #0C0623;
+  --text: #FFADE2;
+  --prompt-default: #AEBED6;
+  --prompt-1: #FE6BC9;
+  --prompt-2: #FF9951;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
 }
 
 html,
 body {
+  color: var(--text);
+  background-color: var(--bg);
   height: 100%;
+  font-size: 16px;
+  display: block;
 }
 
 html {
@@ -14,14 +34,96 @@ html {
 }
 
 body {
-  padding: 10px;
+  padding: 16px;
   box-sizing: border-box;
 }
 
 main {
+  display: block;
   box-sizing: border-box;
   height: 100%;
-  padding: 10px;
   border: solid 1px;
-  overflow: auto;
+  border-radius: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+p {
+  display: block;
+  line-height: 22px;
+  animation: typing 0.5s steps(30, end);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+div {
+  line-height: 22px;
+}
+
+pre {
+  line-height: 15px !important;
+}
+
+input {
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--bg);
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+  color: #FF7685;
+  caret-color: var(--prompt-default)
+}
+
+#bars {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: var(--bg);
+}
+
+#bar-1 {
+  height: 36px;
+  background-color: var(--text);
+  color: var(--bg);
+  line-height: 36px;
+  padding-left: 10px;
+}
+
+#bar-2 {
+  height: 4px;
+  background-color: var(--text);
+  margin-top: 1px;
+}
+
+#bar-3 {
+  height: 3px;
+  background-color: var(--text);
+  margin-top: 2px;
+}
+
+#bar-4 {
+  height: 2px;
+  background-color: var(--text);
+  margin-top: 3px;
+}
+
+
+#bar-5 {
+  height: 1px;
+  background-color: var(--text);
+  margin-top: 4px;
+}
+
+#terminal {
+  margin-left: 10px;
+}
+
+#input-line {
+  margin-left: 10px;
 }
