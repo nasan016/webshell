@@ -4,10 +4,11 @@
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 300;
   --bg: #0C0623;
-  --text: #FFADE2;
+  --border: #FFADE2;
+  --text: #FFD6F1;
   --prompt-default: #AEBED6;
   --prompt-1: #FE6BC9;
-  --prompt-2: #FF9951;
+  --prompt-2: #70FDFF;
 }
 
 @keyframes typing {
@@ -42,7 +43,7 @@ main {
   display: block;
   box-sizing: border-box;
   height: 100%;
-  border: solid 1px;
+  border: var(--border) solid 1px;
   border-radius: 2px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -62,6 +63,7 @@ div {
 
 pre {
   line-height: 15px !important;
+  color: #FF9951;
 }
 
 input {
@@ -89,7 +91,7 @@ input {
 
 #bar-1 {
   height: 36px;
-  background-color: var(--text);
+  background-color: var(--border);
   color: var(--bg);
   line-height: 36px;
   padding-left: 10px;
@@ -97,26 +99,26 @@ input {
 
 #bar-2 {
   height: 4px;
-  background-color: var(--text);
+  background-color: var(--border);
   margin-top: 1px;
 }
 
 #bar-3 {
   height: 3px;
-  background-color: var(--text);
+  background-color: var(--border);
   margin-top: 2px;
 }
 
 #bar-4 {
   height: 2px;
-  background-color: var(--text);
+  background-color: var(--border);
   margin-top: 3px;
 }
 
 
 #bar-5 {
   height: 1px;
-  background-color: var(--text);
+  background-color: var(--border);
   margin-top: 4px;
 }
 
