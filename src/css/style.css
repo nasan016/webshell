@@ -92,6 +92,11 @@ a {
   color: #B6AAEE;
 }
 
+a:hover {
+  background-color: var(--border);
+  color: var(--bg);
+}
+
 #bars {
   font-family: 'Pixelify Sans', sans-serif;
   font-size: 20px;

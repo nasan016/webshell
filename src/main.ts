@@ -31,12 +31,11 @@ function userInputHandler(e : KeyboardEvent) {
 function enterKey() {
   const resetInput = "";
   userInput = USERINPUT.value;
-  userInput = userInput.trim();
-  let newUserInput = `<span class='output'>${userInput}</span>`
+  let newUserInput = `<span class='output'>${userInput}</span>`;
 
   //if clear then early return
   if (userInput === 'clear') {
-    commandHandler(userInput)
+    commandHandler(userInput.toLowerCase().trim());
     USERINPUT.value = resetInput;
     userInput = resetInput;
     return
@@ -51,7 +50,7 @@ function enterKey() {
   just insert a prompt before #write-lines
   */
   if (userInput.length !== 0) {
-      commandHandler(userInput)
+      commandHandler(userInput.toLowerCase().trim());
   }
   
   USERINPUT.value = resetInput;
@@ -68,34 +67,40 @@ function commandHandler(input : string) {
       })
       break;
     case 'banner':
-      writeLines(BANNER)
+      writeLines(BANNER);
       break;
     case 'help':
-      writeLines(HELP)
+      writeLines(HELP);
       break;
     case 'whoami':
-      writeLines(CREATEWHOAMI())
+      writeLines(CREATEWHOAMI());
       break;
     case 'about':
-      writeLines(CREATEABOUT())
+      writeLines(ABOUT);
+      break;
+    case 'projects':
+      writeLines(PROJECTS);
+      break;
+    case 'repo':
+      writeLines(["Redirecting to github.com...", "<br>"])
       break;
     default:
-      writeLines(DEFAULT)
+      writeLines(DEFAULT);
       break;
   }  
 }
 
 function writeLines(message : string[]) {
   message.forEach((item, idx) => {
-    displayText(item, idx)
+    displayText(item, idx);
   }) 
 }
 
 function displayText(item : string, idx : number) {
   setTimeout(() => {
-    const P = document.createElement("p")
-    P.innerHTML = item
+    const P = document.createElement("p");
+    P.innerHTML = item;
     WRITELINES.parentNode!.insertBefore(P, WRITELINES);
-    SCROLLTOBOTTOM()
+    SCROLLTOBOTTOM();
   }, 50 * idx)
 }

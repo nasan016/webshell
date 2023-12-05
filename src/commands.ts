@@ -56,6 +56,10 @@ const HELPOBJ = {
     "Who made this website?",
     ],
     [
+      "'projects'",
+      "Maybe there's something interesting."
+    ],
+    [
       "'whoami'",
       "A perplexing question."
     ],
@@ -73,17 +77,51 @@ const HELPOBJ = {
   ],
 }
 
+const PROJECTSOBJ = {
+  "projects": [
+    [
+      "GofeR",
+      "Go",
+      "https://github.com/nasan016/gofer"
+    ],
+  ]
+}
+
 const ABOUTOBJ = {
-  "message": "Hi I'm Nathan.",
+  "message": "Hi I'm Nathan. I'm a student at NYU Tandon.",
   "github": [
     "github/nasan016",
     "https://github.com/nasan016",
   ],
   "linkedin": [
     "linkedin/nathanielmacapinlac",
-    "https://linkedin.com/nathanielmacapinlac",
+    "https://www.linkedin.com/in/nathanielmacapinlac/",
   ],
   "email": "nlm8841@nyu.edu"
+}
+
+const CREATEPROJECT = () : string[] => {
+  let string = "";
+  const projects : string[] = [];
+  const files = `${PROJECTSOBJ.projects.length} File(s)`;
+  const SPACE = "&nbsp;";
+
+  projects.push("<br>")
+
+  PROJECTSOBJ.projects.forEach((ele) => {
+    let link = `<a href="${ele[2]}" target="_blank">${ele[0]}</a>`
+    string += SPACE.repeat(2);
+    string += link;
+    string += SPACE.repeat(17 - ele[0].length);
+    string += ele[1];
+    projects.push(string);
+    string = '';
+  });
+
+  projects.push("<br>");
+  projects.push(files);
+  projects.push("<br>");
+  return projects
 }
 
 const CREATEBANNER = () : string[] => {
@@ -128,54 +166,54 @@ const CREATEWHOAMI = () : string[] => {
 
   WHOAMIOBJ.message[r].forEach((ele, idx) => {
     if (idx === WHOAMIOBJ.message[r].length - 1) {
-      ele += "<span class='command'>who am I?</span>"
+      ele += "<span class='command'>who am I?</span>";
     }
     whoami.push(ele);
   })
 
   whoami.push("<br>");
 
-  return whoami;
+  return whoami
 }
 
 const CREATEABOUT = () : string[] => {
   const about : string[] = [];
 
-  const SPACE = "&nbsp;"
+  const SPACE = "&nbsp;";
 
-  const EMAIL = "email"
-  const GITHUB = "github"
-  const LINKEDIN = "linkedin"
+  const EMAIL = "Email";
+  const GITHUB = "Github";
+  const LINKEDIN = "Linkedin";
   
-  const email = "<i class='fa-solid fa-envelope'></i> Email"  
-  const github = "<i class='fa-brands fa-github'></i> Github"
-  const linkedin = "<i class='fa-brands fa-linkedin'></i> LinkedIn"
-  let string = ""
+  const email = `<i class='fa-solid fa-envelope'></i> ${EMAIL}`;   
+  const github = `<i class='fa-brands fa-github'></i> ${GITHUB}`;
+  const linkedin = `<i class='fa-brands fa-linkedin'></i> ${LINKEDIN}`;
+  let string = "";
 
-  about.push("<br>")
-  about.push(ABOUTOBJ.message)
-  about.push("<br>")
-  string += SPACE.repeat(2)
-  string += email
-  string += SPACE.repeat(17 - EMAIL.length)
-  string += `<a target='_blank' href='${ABOUTOBJ.email}'>${ABOUTOBJ.email}</a>`
-  about.push(string)
+  about.push("<br>");
+  about.push(ABOUTOBJ.message);
+  about.push("<br>");
+  string += SPACE.repeat(2);
+  string += email;
+  string += SPACE.repeat(17 - EMAIL.length);
+  string += `<a target='_blank' href='mailto:${ABOUTOBJ.email}'>${ABOUTOBJ.email}</a>`;
+  about.push(string);
 
-  string = ''
-  string += SPACE.repeat(2)
-  string += github
-  string += SPACE.repeat(17 - GITHUB.length)
-  string += `<a target='_blank' href='${ABOUTOBJ.github[1]}'>${ABOUTOBJ.github[0]}</a>`
-  about.push(string)
+  string = '';
+  string += SPACE.repeat(2);
+  string += github;
+  string += SPACE.repeat(17 - GITHUB.length);
+  string += `<a target='_blank' href='${ABOUTOBJ.github[1]}'>${ABOUTOBJ.github[0]}</a>`;
+  about.push(string);
 
-  string = ''
-  string += SPACE.repeat(2)
-  string += linkedin
-  string += SPACE.repeat(17 - LINKEDIN.length)  
-  string += `<a target='_blank' href='${ABOUTOBJ.linkedin[1]}'>${ABOUTOBJ.linkedin[0]}</a>`
-  about.push(string)
+  string = '';
+  string += SPACE.repeat(2);
+  string += linkedin;
+  string += SPACE.repeat(17 - LINKEDIN.length);  
+  string += `<a target='_blank' href='${ABOUTOBJ.linkedin[1]}'>${ABOUTOBJ.linkedin[0]}</a>`;
+  about.push(string);
 
-  about.push("<br>")
+  about.push("<br>");
   return about
 }
 
@@ -187,18 +225,20 @@ const CREATEHELP = () : string[] => {
     const SPACE = "&nbsp;";
     let string = "";
     string += SPACE.repeat(2);
-    string += "<span class='command'>"
-    string += ele[0]
-    string += "</span>"
-    string += SPACE.repeat(17 - ele[0].length)
-    string += ele[1]
-    help.push(string)
+    string += "<span class='command'>";
+    string += ele[0];
+    string += "</span>";
+    string += SPACE.repeat(17 - ele[0].length);
+    string += ele[1];
+    help.push(string);
   })
 
-  help.push("<br>")
+  help.push("<br>");
   return help
 }
 
-const BANNER = CREATEBANNER()
-const DEFAULT = CREATEDEFAULT()
-const HELP = CREATEHELP()
+const BANNER = CREATEBANNER();
+const DEFAULT = CREATEDEFAULT();
+const HELP = CREATEHELP();
+const ABOUT = CREATEABOUT();
+const PROJECTS = CREATEPROJECT();
