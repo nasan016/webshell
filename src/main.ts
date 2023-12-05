@@ -33,6 +33,14 @@ function enterKey() {
   userInput = USERINPUT.value;
   userInput = userInput.trim();
 
+  //if clear then early return
+  if (userInput === 'clear') {
+    commandHandler(userInput)
+    USERINPUT.value = resetInput;
+    userInput = resetInput;
+    return
+  }
+
   const DIV = document.createElement("div");
   DIV.innerHTML = PROMPT.innerHTML.concat(" ", userInput);  
   WRITELINES.parentNode!.insertBefore(DIV, WRITELINES);
@@ -43,7 +51,7 @@ function enterKey() {
   */
   if (userInput.length !== 0) {
       commandHandler(userInput)
-    }
+  }
   
   USERINPUT.value = resetInput;
   userInput = resetInput; 
@@ -51,10 +59,21 @@ function enterKey() {
 
 function commandHandler(input : string) {
   switch(input) {
+    case 'clear':
+      setTimeout(() => {
+        TERMINAL.innerHTML = "";
+        TERMINAL.appendChild(WRITELINESCOPY);
+        WRITELINES = WRITELINESCOPY;
+      })
+      break;
     case 'banner':
       writeLines(BANNER)
       break;
+    case 'help':
+      writeLines(HELP)
+      break;
     default:
+      writeLines(DEFAULT)
       break;
   }  
 }

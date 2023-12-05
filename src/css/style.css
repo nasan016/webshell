@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Pixelify+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;600&family=Pixelify+Sans&display=swap');
 
 :root {
   font-family: 'IBM Plex Mono', monospace;
-  font-weight: 300;
+  font-weight: 200;
   --bg: #0C0623;
   --border: #FFADE2;
-  --text: #FFD6F1;
-  --prompt-default: #AEBED6;
+  --text: #F8DDE5;
+  --prompt-default: #A5A7A7;
   --prompt-1: #FE6BC9;
   --prompt-2: #70FDFF;
 }
@@ -43,10 +43,17 @@ main {
   display: block;
   box-sizing: border-box;
   height: 100%;
-  border: var(--border) solid 1px;
+  border: var(--border) solid 2px;
   border-radius: 2px;
   overflow-y: auto;
   overflow-x: hidden;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
 }
 
 p {
@@ -62,6 +69,7 @@ div {
 }
 
 pre {
+  margin: 0;
   line-height: 15px !important;
   color: #FF9951;
 }
@@ -76,7 +84,12 @@ input {
   outline: none;
   font-size: 16px;
   color: #FF7685;
-  caret-color: var(--prompt-default)
+  caret-color: var(--prompt-default);
+  width: 50%;
+}
+
+a {
+  color: #B6AAEE;
 }
 
 #bars {
@@ -123,9 +136,18 @@ input {
 }
 
 #terminal {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 #input-line {
-  margin-left: 10px;
+  margin-left: 20px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.command {
+  text-shadow:
+    0 0 7px #fff,
+    0 0 151px var(--border);
+  color: #FD9BDB;
 }
