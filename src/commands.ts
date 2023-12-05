@@ -8,7 +8,7 @@ const BANNEROBJ = {
     "╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝",
   ],
   "greeting": "Welcome to WebShell v1.0.0",
-  "repolink": "https://github.com/nasan016/nasanterminal"
+  "repolink": "https://github.com/nasan016/webshell"
 }
 
 const DEFAULTOBJ = {

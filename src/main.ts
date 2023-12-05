@@ -83,6 +83,9 @@ function commandHandler(input : string) {
       break;
     case 'repo':
       writeLines(["Redirecting to github.com...", "<br>"])
+      setTimeout(() => {
+        window.open(BANNEROBJ.repolink, '_blank')
+      }, 500)
       break;
     default:
       writeLines(DEFAULT);
