@@ -1,16 +1,18 @@
-import * as consts from "./commands";
+import * as com from "./commands";
 
 const TERMINAL = document.getElementById("terminal")!;
 const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
 const PROMPT = document.getElementById("prompt")!;
 
-let WRITELINES = document.getElementById("write-lines")!;
-let userInput : string;
+//this gets deleted and reassigned
+let mutWriteLines = document.getElementById("write-lines")!;
 
 //WRITELINESCOPY is used to during the "clear" command
-const WRITELINESCOPY = WRITELINES
+const WRITELINESCOPY = mutWriteLines;
 
-const SCROLLTOBOTTOM = () => {
+let userInput : string;
+
+const SCROLL_TO_BOTTOM = () => {
   const MAIN = document.getElementById("main")!;
   MAIN.scrollTop = MAIN.scrollHeight;
 }
@@ -21,8 +23,10 @@ function userInputHandler(e : KeyboardEvent) {
   switch(key) {
     case "Enter":
       enterKey();
-      SCROLLTOBOTTOM();
+      SCROLL_TO_BOTTOM();
       break;
+    case "Escape":
+      USERINPUT.value = "";
   }
 }
 
@@ -39,9 +43,9 @@ function enterKey() {
     return
   }
 
-  const DIV = document.createElement("div");
-  DIV.innerHTML = PROMPT.innerHTML.concat(" ", newUserInput);  
-  WRITELINES.parentNode!.insertBefore(DIV, WRITELINES);
+  const div = document.createElement("div");
+  div.innerHTML = PROMPT.innerHTML.concat(" ", newUserInput);  
+  mutWriteLines.parentNode!.insertBefore(div, mutWriteLines);
 
   /*
   if input is empty or a collection of spaces, 
@@ -61,32 +65,32 @@ function commandHandler(input : string) {
       setTimeout(() => {
         TERMINAL.innerHTML = "";
         TERMINAL.appendChild(WRITELINESCOPY);
-        WRITELINES = WRITELINESCOPY;
+        mutWriteLines = WRITELINESCOPY;
       })
       break;
     case 'banner':
-      writeLines(consts.BANNER);
+      writeLines(com.BANNER);
       break;
     case 'help':
-      writeLines(consts.HELP);
+      writeLines(com.HELP);
       break;
     case 'whoami':
-      writeLines(consts.CREATEWHOAMI());
+      writeLines(com.CREATEWHOAMI());
       break;
     case 'about':
-      writeLines(consts.ABOUT);
+      writeLines(com.ABOUT);
       break;
     case 'projects':
-      writeLines(consts.PROJECTS);
+      writeLines(com.PROJECTS);
       break;
     case 'repo':
-      writeLines(["Redirecting to github.com...", "<br>"])
+      writeLines(["Redirecting to github.com...", "<br>"]);
       setTimeout(() => {
-        window.open(consts.BANNEROBJ.repolink, '_blank')
-      }, 500)
+        window.open(com.BANNEROBJ.repolink, '_blank');
+      }, 500);
       break;
     default:
-      writeLines(consts.DEFAULT);
+      writeLines(com.DEFAULT);
       break;
   }  
 }
@@ -99,18 +103,18 @@ function writeLines(message : string[]) {
 
 function displayText(item : string, idx : number) {
   setTimeout(() => {
-    const P = document.createElement("p");
-    P.innerHTML = item;
-    WRITELINES.parentNode!.insertBefore(P, WRITELINES);
-    SCROLLTOBOTTOM();
-  }, 50 * idx)
+    const p = document.createElement("p");
+    p.innerHTML = item;
+    mutWriteLines.parentNode!.insertBefore(p, mutWriteLines);
+    SCROLL_TO_BOTTOM();
+  }, 50 * idx);
 }
 
 window.addEventListener('load', () => {
-  writeLines(consts.BANNER);
+  writeLines(com.BANNER);
   USERINPUT.addEventListener('keydown', userInputHandler);
 });
 
 window.addEventListener('click', () => {
-  USERINPUT.focus()
+  USERINPUT.focus();
 })

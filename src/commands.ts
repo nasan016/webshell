@@ -1,4 +1,4 @@
-const BANNEROBJ = {
+const bannerObj = {
   "ascii": [
     "███╗   ██╗ █████╗ ███████╗ █████╗ ███╗   ██╗",
     "████╗  ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║",
@@ -11,7 +11,7 @@ const BANNEROBJ = {
   "repolink": "https://github.com/nasan016/webshell"
 }
 
-const DEFAULTOBJ = {
+const defaultObj = {
   "message": [
     "<br>",
     "COMMAND NOT FOUND",
@@ -20,7 +20,7 @@ const DEFAULTOBJ = {
   ]
 }
 
-const WHOAMIOBJ = {
+const whoamiObj = {
   "message" : [
     [
       "In the kaleidoscope of existence,",
@@ -49,7 +49,7 @@ const WHOAMIOBJ = {
   ],
 }
 
-const HELPOBJ = {
+const helpObj = {
   "commands": [
     [
     "'about'",
@@ -77,7 +77,7 @@ const HELPOBJ = {
   ],
 }
 
-const PROJECTSOBJ = {
+const projectsObj = {
   "projects": [
     [
       "GofeR",
@@ -87,7 +87,7 @@ const PROJECTSOBJ = {
   ]
 }
 
-const ABOUTOBJ = {
+const aboutObj = {
   "message": "Hi I'm Nathan. I'm a student at NYU Tandon.",
   "github": [
     "github/nasan016",
@@ -100,15 +100,15 @@ const ABOUTOBJ = {
   "email": "nlm8841@nyu.edu"
 }
 
-const CREATEPROJECT = () : string[] => {
+const createProject = () : string[] => {
   let string = "";
   const projects : string[] = [];
-  const files = `${PROJECTSOBJ.projects.length} File(s)`;
+  const files = `${projectsObj.projects.length} File(s)`;
   const SPACE = "&nbsp;";
 
   projects.push("<br>")
 
-  PROJECTSOBJ.projects.forEach((ele) => {
+  projectsObj.projects.forEach((ele) => {
     let link = `<a href="${ele[2]}" target="_blank">${ele[0]}</a>`
     string += SPACE.repeat(2);
     string += link;
@@ -124,10 +124,10 @@ const CREATEPROJECT = () : string[] => {
   return projects
 }
 
-const CREATEBANNER = () : string[] => {
+const createBanner = () : string[] => {
   const banner : string[] = [];
   banner.push("<br>")
-  BANNEROBJ.ascii.forEach((ele) => {
+  bannerObj.ascii.forEach((ele) => {
     let bannerString = "";
     //this is for the ascii art
     for (let i = 0; i < ele.length; i++) {
@@ -142,30 +142,34 @@ const CREATEBANNER = () : string[] => {
     banner.push(eleToPush);
   });  
   banner.push("<br>");
-  banner.push(BANNEROBJ.greeting);
+  banner.push(bannerObj.greeting);
   banner.push("Type <span class='command'>'help'</span> for a list of all available commands.");
-  banner.push("Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='" + BANNEROBJ.repolink + "' target='_blank'>here</a>.");
+  banner.push("Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='" + bannerObj.repolink + "' target='_blank'>here</a>.");
   banner.push("<br>");
   return banner;
 }
 
-const CREATEDEFAULT = () : string[] => {
+const createDefault = () : string[] => {
   const defaultMsg : string[] = [];
 
-  DEFAULTOBJ.message.forEach((ele) => {
+  defaultObj.message.forEach((ele) => {
     defaultMsg.push(ele);
   })
 
   return defaultMsg;
 }
 
-const CREATEWHOAMI = () : string[] => {
+/*
+this function will not be assigned to a variable
+it's used to create random whoami messages
+*/
+const createWhoami = () : string[] => {
   const whoami : string[] = [];  
-  const r = Math.floor(Math.random() * WHOAMIOBJ.message.length);
+  const r = Math.floor(Math.random() * whoamiObj.message.length);
   whoami.push("<br>");
 
-  WHOAMIOBJ.message[r].forEach((ele, idx) => {
-    if (idx === WHOAMIOBJ.message[r].length - 1) {
+  whoamiObj.message[r].forEach((ele, idx) => {
+    if (idx === whoamiObj.message[r].length - 1) {
       ele += "<span class='command'>who am I?</span>";
     }
     whoami.push(ele);
@@ -176,7 +180,7 @@ const CREATEWHOAMI = () : string[] => {
   return whoami
 }
 
-const CREATEABOUT = () : string[] => {
+const createAbout = () : string[] => {
   const about : string[] = [];
 
   const SPACE = "&nbsp;";
@@ -191,37 +195,37 @@ const CREATEABOUT = () : string[] => {
   let string = "";
 
   about.push("<br>");
-  about.push(ABOUTOBJ.message);
+  about.push(aboutObj.message);
   about.push("<br>");
   string += SPACE.repeat(2);
   string += email;
   string += SPACE.repeat(17 - EMAIL.length);
-  string += `<a target='_blank' href='mailto:${ABOUTOBJ.email}'>${ABOUTOBJ.email}</a>`;
+  string += `<a target='_blank' href='mailto:${aboutObj.email}'>${aboutObj.email}</a>`;
   about.push(string);
 
   string = '';
   string += SPACE.repeat(2);
   string += github;
   string += SPACE.repeat(17 - GITHUB.length);
-  string += `<a target='_blank' href='${ABOUTOBJ.github[1]}'>${ABOUTOBJ.github[0]}</a>`;
+  string += `<a target='_blank' href='${aboutObj.github[1]}'>${aboutObj.github[0]}</a>`;
   about.push(string);
 
   string = '';
   string += SPACE.repeat(2);
   string += linkedin;
   string += SPACE.repeat(17 - LINKEDIN.length);  
-  string += `<a target='_blank' href='${ABOUTOBJ.linkedin[1]}'>${ABOUTOBJ.linkedin[0]}</a>`;
+  string += `<a target='_blank' href='${aboutObj.linkedin[1]}'>${aboutObj.linkedin[0]}</a>`;
   about.push(string);
 
   about.push("<br>");
   return about
 }
 
-const CREATEHELP = () : string[] => {
+const createHelp = () : string[] => {
   const help : string[] = []
   help.push("<br>")
 
-  HELPOBJ.commands.forEach((ele) => {
+  helpObj.commands.forEach((ele) => {
     const SPACE = "&nbsp;";
     let string = "";
     string += SPACE.repeat(2);
@@ -237,10 +241,10 @@ const CREATEHELP = () : string[] => {
   return help
 }
 
-const BANNER = CREATEBANNER();
-const DEFAULT = CREATEDEFAULT();
-const HELP = CREATEHELP();
-const ABOUT = CREATEABOUT();
-const PROJECTS = CREATEPROJECT();
+const BANNER = createBanner();
+const DEFAULT = createDefault();
+const HELP = createHelp();
+const ABOUT = createAbout();
+const PROJECTS = createProject();
 
-export { BANNER, DEFAULT, HELP, ABOUT, PROJECTS, CREATEWHOAMI, BANNEROBJ } 
+export { BANNER, DEFAULT, HELP, ABOUT, PROJECTS, createWhoami as CREATEWHOAMI, bannerObj as BANNEROBJ } 
