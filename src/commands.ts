@@ -23,8 +23,8 @@ const DEFAULTOBJ = {
 const WHOAMIOBJ = {
   "message" : [
     [
-    "In the kaleidoscope of existence,",
-    "I am but a reflection questioning the enigma - "
+      "In the kaleidoscope of existence,",
+      "I am but a reflection questioning the enigma - "
     ],
     [
       "Amidst cosmic whispers,",
@@ -35,6 +35,16 @@ const WHOAMIOBJ = {
       "In the symphony of life,",
       "I am a note inquiring its own melody,",
       "harmonizing with the universal query - ",
+    ],
+    [
+      "As stardust contemplating its journey,",
+      "I ponder the cosmic query,",
+      "silently asking - ",
+    ],
+    [
+      "In the tapestry of reality,",
+      "I am the thread of self-inquiry,",
+      "weaving through the eternal question - "
     ],
   ],
 }
@@ -61,6 +71,19 @@ const HELPOBJ = {
       "Clear the terminal."
     ]
   ],
+}
+
+const ABOUTOBJ = {
+  "message": "Hi I'm Nathan.",
+  "github": [
+    "github/nasan016",
+    "https://github.com/nasan016",
+  ],
+  "linkedin": [
+    "linkedin/nathanielmacapinlac",
+    "https://linkedin.com/nathanielmacapinlac",
+  ],
+  "email": "nlm8841@nyu.edu"
 }
 
 const CREATEBANNER = () : string[] => {
@@ -111,13 +134,55 @@ const CREATEWHOAMI = () : string[] => {
   })
 
   whoami.push("<br>");
+
   return whoami;
 }
 
-console.log(CREATEWHOAMI())
+const CREATEABOUT = () : string[] => {
+  const about : string[] = [];
+
+  const SPACE = "&nbsp;"
+
+  const EMAIL = "email"
+  const GITHUB = "github"
+  const LINKEDIN = "linkedin"
+  
+  const email = "<i class='fa-solid fa-envelope'></i> Email"  
+  const github = "<i class='fa-brands fa-github'></i> Github"
+  const linkedin = "<i class='fa-brands fa-linkedin'></i> LinkedIn"
+  let string = ""
+
+  about.push("<br>")
+  about.push(ABOUTOBJ.message)
+  about.push("<br>")
+  string += SPACE.repeat(2)
+  string += email
+  string += SPACE.repeat(17 - EMAIL.length)
+  string += `<a target='_blank' href='${ABOUTOBJ.email}'>${ABOUTOBJ.email}</a>`
+  about.push(string)
+
+  string = ''
+  string += SPACE.repeat(2)
+  string += github
+  string += SPACE.repeat(17 - GITHUB.length)
+  string += `<a target='_blank' href='${ABOUTOBJ.github[1]}'>${ABOUTOBJ.github[0]}</a>`
+  about.push(string)
+
+  string = ''
+  string += SPACE.repeat(2)
+  string += linkedin
+  string += SPACE.repeat(17 - LINKEDIN.length)  
+  string += `<a target='_blank' href='${ABOUTOBJ.linkedin[1]}'>${ABOUTOBJ.linkedin[0]}</a>`
+  about.push(string)
+
+  about.push("<br>")
+  return about
+}
+
 const CREATEHELP = () : string[] => {
   const help : string[] = []
   help.push("<br>")
+
   HELPOBJ.commands.forEach((ele) => {
     const SPACE = "&nbsp;";
     let string = "";

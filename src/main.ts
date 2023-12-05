@@ -23,7 +23,6 @@ function userInputHandler(e : KeyboardEvent) {
   switch(key) {
     case "Enter":
       enterKey();
-      SCROLLTOBOTTOM();
       break;
   }
 }
@@ -32,6 +31,7 @@ function enterKey() {
   const resetInput = "";
   userInput = USERINPUT.value;
   userInput = userInput.trim();
+  let newUserInput = `<span class='output'>${userInput}</span>`
 
   //if clear then early return
   if (userInput === 'clear') {
@@ -42,7 +42,7 @@ function enterKey() {
   }
 
   const DIV = document.createElement("div");
-  DIV.innerHTML = PROMPT.innerHTML.concat(" ", userInput);  
+  DIV.innerHTML = PROMPT.innerHTML.concat(" ", newUserInput);  
   WRITELINES.parentNode!.insertBefore(DIV, WRITELINES);
 
   /*
@@ -74,6 +74,9 @@ function commandHandler(input : string) {
       break;
     case 'whoami':
       writeLines(CREATEWHOAMI())
+      break;
+    case 'about':
+      writeLines(CREATEABOUT())
       break;
     default:
       writeLines(DEFAULT)
