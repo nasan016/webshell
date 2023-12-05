@@ -27,6 +27,7 @@ function userInputHandler(e : KeyboardEvent) {
       break;
     case "Escape":
       USERINPUT.value = "";
+      break;
   }
 }
 
