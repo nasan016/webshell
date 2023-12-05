@@ -107,3 +107,4 @@ function displayText(item : string, idx : number) {
     SCROLLTOBOTTOM();
   }, 50 * idx)
 }
+
