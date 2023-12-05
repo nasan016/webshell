@@ -21,7 +21,22 @@ const DEFAULTOBJ = {
 }
 
 const WHOAMIOBJ = {
-  "message" : "Who am I? A question worth exploring."
+  "message" : [
+    [
+    "In the kaleidoscope of existence,",
+    "I am but a reflection questioning the enigma - "
+    ],
+    [
+      "Amidst cosmic whispers,",
+      "I navigate the maze of self-discovery,",
+      "echoing the eternal refrain - "
+    ],
+    [
+      "In the symphony of life,",
+      "I am a note inquiring its own melody,",
+      "harmonizing with the universal query - ",
+    ],
+  ],
 }
 
 const HELPOBJ = {
@@ -37,6 +52,9 @@ const HELPOBJ = {
     [
       "'repo'",
       "View the Github Repository."
+    ],
+    ["'banner'",
+      "Display the banner."
     ],
     [
       "'clear'",
@@ -80,6 +98,23 @@ const CREATEDEFAULT = () : string[] => {
   return defaultMsg;
 }
 
+const CREATEWHOAMI = () : string[] => {
+  const whoami : string[] = [];  
+  const r = Math.floor(Math.random() * WHOAMIOBJ.message.length);
+  whoami.push("<br>");
+
+  WHOAMIOBJ.message[r].forEach((ele, idx) => {
+    if (idx === WHOAMIOBJ.message[r].length - 1) {
+      ele += "<span class='command'>who am I?</span>"
+    }
+    whoami.push(ele);
+  })
+
+  whoami.push("<br>");
+  return whoami;
+}
+
+console.log(CREATEWHOAMI())
 const CREATEHELP = () : string[] => {
   const help : string[] = []
   help.push("<br>")
@@ -102,4 +137,3 @@ const CREATEHELP = () : string[] => {
 const BANNER = CREATEBANNER()
 const DEFAULT = CREATEDEFAULT()
 const HELP = CREATEHELP()
-console.log(HELP)

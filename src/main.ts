@@ -72,6 +72,9 @@ function commandHandler(input : string) {
     case 'help':
       writeLines(HELP)
       break;
+    case 'whoami':
+      writeLines(CREATEWHOAMI())
+      break;
     default:
       writeLines(DEFAULT)
       break;
