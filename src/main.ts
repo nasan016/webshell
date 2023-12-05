@@ -23,6 +23,7 @@ function userInputHandler(e : KeyboardEvent) {
   switch(key) {
     case "Enter":
       enterKey();
+      SCROLLTOBOTTOM();
       break;
   }
 }
