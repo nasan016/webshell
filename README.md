@@ -1,7 +1,7 @@
 # WebShell | Terminal Portfolio Website
 
 <div align="center">
-  <img alt="banner" src="src="https://raw.githubusercontent.com/nasan016/webshell/main/res/banner.png""
+  <img alt="banner" src="https://raw.githubusercontent.com/nasan016/webshell/main/res/banner.png">
 </div>
 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
