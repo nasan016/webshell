@@ -1,3 +1,5 @@
+import * as consts from "./commands";
+
 const TERMINAL = document.getElementById("terminal")!;
 const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
 const PROMPT = document.getElementById("prompt")!;
@@ -7,10 +9,6 @@ let userInput : string;
 
 //WRITELINESCOPY is used to during the "clear" command
 const WRITELINESCOPY = WRITELINES
-
-const FOCUS = () => {
-  USERINPUT.focus();
-}
 
 const SCROLLTOBOTTOM = () => {
   const MAIN = document.getElementById("main")!;
@@ -67,28 +65,28 @@ function commandHandler(input : string) {
       })
       break;
     case 'banner':
-      writeLines(BANNER);
+      writeLines(consts.BANNER);
       break;
     case 'help':
-      writeLines(HELP);
+      writeLines(consts.HELP);
       break;
     case 'whoami':
-      writeLines(CREATEWHOAMI());
+      writeLines(consts.CREATEWHOAMI());
       break;
     case 'about':
-      writeLines(ABOUT);
+      writeLines(consts.ABOUT);
       break;
     case 'projects':
-      writeLines(PROJECTS);
+      writeLines(consts.PROJECTS);
       break;
     case 'repo':
       writeLines(["Redirecting to github.com...", "<br>"])
       setTimeout(() => {
-        window.open(BANNEROBJ.repolink, '_blank')
+        window.open(consts.BANNEROBJ.repolink, '_blank')
       }, 500)
       break;
     default:
-      writeLines(DEFAULT);
+      writeLines(consts.DEFAULT);
       break;
   }  
 }
@@ -107,3 +105,12 @@ function displayText(item : string, idx : number) {
     SCROLLTOBOTTOM();
   }, 50 * idx)
 }
+
+window.addEventListener('load', () => {
+  writeLines(consts.BANNER);
+  USERINPUT.addEventListener('keydown', userInputHandler);
+});
+
+window.addEventListener('click', () => {
+  USERINPUT.focus()
+})
