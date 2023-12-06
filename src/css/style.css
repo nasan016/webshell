@@ -161,3 +161,8 @@ a:hover {
   font-weight: 400 !important;
   color: #FF7685
 }
+
+.keys {
+  color: #FF9951;
+  font-weight: 400;
+}

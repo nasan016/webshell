@@ -132,7 +132,7 @@ const createBanner = () : string[] => {
     //this is for the ascii art
     for (let i = 0; i < ele.length; i++) {
       if (ele[i] === " ") {
-        bannerString += "&nbsp;";
+        bannerString += "&ensp;";
       } else {
         bannerString += ele[i];
       }
@@ -144,7 +144,7 @@ const createBanner = () : string[] => {
   banner.push("<br>");
   banner.push(bannerObj.greeting);
   banner.push("Type <span class='command'>'help'</span> for a list of all available commands.");
-  banner.push("Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='" + bannerObj.repolink + "' target='_blank'>here</a>.");
+  banner.push(`Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='${bannerObj.repolink}' target='_blank'>here</a>.`);
   banner.push("<br>");
   return banner;
 }
@@ -238,6 +238,10 @@ const createHelp = () : string[] => {
   })
 
   help.push("<br>");
+  help.push("Press <span class='keys'>[Tab]</span> for auto completion.")
+  help.push("Press <span class='keys'>[Esc]</span> to clear the input line.")
+  help.push("Press <span class='keys'>[↑][↓]</span> to scroll through your history of commands.")
+  help.push("<br>")
   return help
 }
 
@@ -247,4 +251,4 @@ const HELP = createHelp();
 const ABOUT = createAbout();
 const PROJECTS = createProject();
 
-export { BANNER, DEFAULT, HELP, ABOUT, PROJECTS, createWhoami as CREATEWHOAMI, bannerObj as BANNEROBJ } 
+export { BANNER, DEFAULT, HELP, ABOUT, PROJECTS, createWhoami as WHOAMI, bannerObj as BANNEROBJ } 

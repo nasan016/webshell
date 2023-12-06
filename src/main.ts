@@ -10,9 +10,15 @@ let mutWriteLines = document.getElementById("write-lines")!;
 //WRITELINESCOPY is used to during the "clear" command
 const WRITELINESCOPY = mutWriteLines;
 
+const HISTORY : string[] = []
+let historyIdx = 0
+let tempInput = ""
+
+const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
+
 let userInput : string;
 
-const SCROLL_TO_BOTTOM = () => {
+const scrollToBottom = () => {
   const MAIN = document.getElementById("main")!;
   MAIN.scrollTop = MAIN.scrollHeight;
 }
@@ -23,10 +29,41 @@ function userInputHandler(e : KeyboardEvent) {
   switch(key) {
     case "Enter":
       enterKey();
-      SCROLL_TO_BOTTOM();
+      scrollToBottom();
       break;
     case "Escape":
       USERINPUT.value = "";
+      break;
+    case "ArrowUp":
+      if (historyIdx === HISTORY.length) tempInput = USERINPUT.value
+      if (historyIdx !== 0) {
+        historyIdx -= 1;
+        USERINPUT.value = HISTORY[historyIdx];
+      }
+      e.preventDefault()
+      break;
+    case "ArrowDown":
+      if (historyIdx !== HISTORY.length) {
+          historyIdx += 1;
+          USERINPUT.value = HISTORY[historyIdx];
+          if (historyIdx === HISTORY.length) USERINPUT.value = tempInput;  
+    }      
+      break;
+    case "Tab":
+      let currInput = USERINPUT.value;
+      const breakException = {};
+      try {
+        COMMANDS.forEach((ele) => {
+          for (let i = 0; i < currInput.length; i++) {
+            if (currInput[i] !== ele[i]) break;
+            USERINPUT.value = ele;
+            throw breakException;
+          }
+        }) 
+      } catch (e) {
+        if (e !== breakException) throw e;        
+      }
+      e.preventDefault();
       break;
   }
 }
@@ -35,6 +72,9 @@ function enterKey() {
   const resetInput = "";
   userInput = USERINPUT.value;
   let newUserInput = `<span class='output'>${userInput}</span>`;
+
+  HISTORY.push(userInput);
+  historyIdx = HISTORY.length
 
   //if clear then early return
   if (userInput === 'clear') {
@@ -76,7 +116,7 @@ function commandHandler(input : string) {
       writeLines(com.HELP);
       break;
     case 'whoami':
-      writeLines(com.CREATEWHOAMI());
+      writeLines(com.WHOAMI());
       break;
     case 'about':
       writeLines(com.ABOUT);
@@ -107,15 +147,20 @@ function displayText(item : string, idx : number) {
     const p = document.createElement("p");
     p.innerHTML = item;
     mutWriteLines.parentNode!.insertBefore(p, mutWriteLines);
-    SCROLL_TO_BOTTOM();
+    scrollToBottom();
   }, 50 * idx);
 }
 
-window.addEventListener('load', () => {
-  writeLines(com.BANNER);
-  USERINPUT.addEventListener('keydown', userInputHandler);
-});
+const initEventListeners = () => {
+  window.addEventListener('load', () => {
+    writeLines(com.BANNER);
+    USERINPUT.addEventListener('keydown', userInputHandler);
+  })
 
-window.addEventListener('click', () => {
-  USERINPUT.focus();
-})
+
+  window.addEventListener('click', () => {
+    USERINPUT.focus();
+  })
+}
+
+initEventListeners();
