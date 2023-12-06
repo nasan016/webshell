@@ -132,7 +132,7 @@ const createBanner = () : string[] => {
     //this is for the ascii art
     for (let i = 0; i < ele.length; i++) {
       if (ele[i] === " ") {
-        bannerString += "&ensp;";
+        bannerString += "&nbsp;";
       } else {
         bannerString += ele[i];
       }
