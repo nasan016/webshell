@@ -35,34 +35,14 @@ function userInputHandler(e : KeyboardEvent) {
       USERINPUT.value = "";
       break;
     case "ArrowUp":
-      if (historyIdx === HISTORY.length) tempInput = USERINPUT.value
-      if (historyIdx !== 0) {
-        historyIdx -= 1;
-        USERINPUT.value = HISTORY[historyIdx];
-      }
+      arrowKeys(key);
       e.preventDefault()
       break;
     case "ArrowDown":
-      if (historyIdx !== HISTORY.length) {
-          historyIdx += 1;
-          USERINPUT.value = HISTORY[historyIdx];
-          if (historyIdx === HISTORY.length) USERINPUT.value = tempInput;  
-    }      
+      arrowKeys(key);
       break;
     case "Tab":
-      let currInput = USERINPUT.value;
-      const breakException = {};
-      try {
-        COMMANDS.forEach((ele) => {
-          for (let i = 0; i < currInput.length; i++) {
-            if (currInput[i] !== ele[i]) break;
-            USERINPUT.value = ele;
-            throw breakException;
-          }
-        }) 
-      } catch (e) {
-        if (e !== breakException) throw e;        
-      }
+      tabKey();
       e.preventDefault();
       break;
   }
@@ -98,6 +78,43 @@ function enterKey() {
   
   USERINPUT.value = resetInput;
   userInput = resetInput; 
+}
+
+function tabKey() {
+    let currInput = USERINPUT.value;
+    const breakException = {};
+
+  //ends the forEach early when a match is found
+    try {
+      COMMANDS.forEach((ele) => {
+        for (let i = 0; i < currInput.length; i++) {
+          if (currInput[i] !== ele[i]) break;
+          USERINPUT.value = ele;
+          throw breakException;
+        }
+      }) 
+    } catch (e) {
+      if (e !== breakException) throw e;        
+    }
+}
+
+function arrowKeys(e : string) {
+  switch(e){
+    case "ArrowDown":      
+      if (historyIdx !== HISTORY.length) {
+          historyIdx += 1;
+          USERINPUT.value = HISTORY[historyIdx];
+          if (historyIdx === HISTORY.length) USERINPUT.value = tempInput;  
+      }      
+      break;
+    case "ArrowUp":
+      if (historyIdx === HISTORY.length) tempInput = USERINPUT.value
+      if (historyIdx !== 0) {
+        historyIdx -= 1;
+        USERINPUT.value = HISTORY[historyIdx];
+      }
+      break;
+  }
 }
 
 function commandHandler(input : string) {
