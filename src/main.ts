@@ -1,25 +1,24 @@
 import * as com from "./commands";
 
-const TERMINAL = document.getElementById("terminal")!;
-const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
-const PROMPT = document.getElementById("prompt")!;
-
-//this gets deleted and reassigned
-let mutWriteLines = document.getElementById("write-lines")!;
+//mutWriteLines gets deleted and reassigned
+let mutWriteLines = document.getElementById("write-lines");
+let historyIdx = 0
+let tempInput = ""
+let userInput : string;
 
 //WRITELINESCOPY is used to during the "clear" command
 const WRITELINESCOPY = mutWriteLines;
-
-const HISTORY : string[] = []
-let historyIdx = 0
-let tempInput = ""
-
+const TERMINAL = document.getElementById("terminal");
+const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
+const PROMPT = document.getElementById("prompt");
 const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
-
-let userInput : string;
+const REPO_LINK = com.BANNEROBJ.repolink;
+const HISTORY : string[] = [];
 
 const scrollToBottom = () => {
-  const MAIN = document.getElementById("main")!;
+  const MAIN = document.getElementById("main");
+  if(!MAIN) return
+
   MAIN.scrollTop = MAIN.scrollHeight;
 }
 
@@ -36,7 +35,7 @@ function userInputHandler(e : KeyboardEvent) {
       break;
     case "ArrowUp":
       arrowKeys(key);
-      e.preventDefault()
+      e.preventDefault();
       break;
     case "ArrowDown":
       arrowKeys(key);
@@ -49,6 +48,7 @@ function userInputHandler(e : KeyboardEvent) {
 }
 
 function enterKey() {
+  if (!mutWriteLines || !PROMPT) return
   const resetInput = "";
   userInput = USERINPUT.value;
   let newUserInput = `<span class='output'>${userInput}</span>`;
@@ -65,37 +65,33 @@ function enterKey() {
   }
 
   const div = document.createElement("div");
-  div.innerHTML = PROMPT.innerHTML.concat(" ", newUserInput);  
-  mutWriteLines.parentNode!.insertBefore(div, mutWriteLines);
+  div.innerHTML = `${PROMPT.innerHTML} ${newUserInput}`;
+
+  if (mutWriteLines.parentNode) {
+    mutWriteLines.parentNode.insertBefore(div, mutWriteLines);
+  }
 
   /*
   if input is empty or a collection of spaces, 
   just insert a prompt before #write-lines
   */
-  if (userInput.length !== 0) {
+  if (userInput.trim().length !== 0) {
       commandHandler(userInput.toLowerCase().trim());
-  }
+    }
   
   USERINPUT.value = resetInput;
   userInput = resetInput; 
 }
 
 function tabKey() {
-    let currInput = USERINPUT.value;
-    const breakException = {};
+  let currInput = USERINPUT.value;
 
-  //ends the forEach early when a match is found
-    try {
-      COMMANDS.forEach((ele) => {
-        for (let i = 0; i < currInput.length; i++) {
-          if (currInput[i] !== ele[i]) break;
-          USERINPUT.value = ele;
-          throw breakException;
-        }
-      }) 
-    } catch (e) {
-      if (e !== breakException) throw e;        
+  for (const ele of COMMANDS) {
+    if(ele.startsWith(currInput)) {
+      USERINPUT.value = ele;
+      return
     }
+  }
 }
 
 function arrowKeys(e : string) {
@@ -121,6 +117,7 @@ function commandHandler(input : string) {
   switch(input) {
     case 'clear':
       setTimeout(() => {
+        if(!TERMINAL || !WRITELINESCOPY) return
         TERMINAL.innerHTML = "";
         TERMINAL.appendChild(WRITELINESCOPY);
         mutWriteLines = WRITELINESCOPY;
@@ -144,7 +141,7 @@ function commandHandler(input : string) {
     case 'repo':
       writeLines(["Redirecting to github.com...", "<br>"]);
       setTimeout(() => {
-        window.open(com.BANNEROBJ.repolink, '_blank');
+        window.open(REPO_LINK, '_blank');
       }, 500);
       break;
     default:
@@ -161,23 +158,23 @@ function writeLines(message : string[]) {
 
 function displayText(item : string, idx : number) {
   setTimeout(() => {
+    if(!mutWriteLines) return
     const p = document.createElement("p");
     p.innerHTML = item;
     mutWriteLines.parentNode!.insertBefore(p, mutWriteLines);
     scrollToBottom();
-  }, 50 * idx);
+  }, 40 * idx);
 }
 
 const initEventListeners = () => {
   window.addEventListener('load', () => {
     writeLines(com.BANNER);
     USERINPUT.addEventListener('keydown', userInputHandler);
-  })
-
-
+  });
+  
   window.addEventListener('click', () => {
     USERINPUT.focus();
-  })
+  });
 }
 
 initEventListeners();

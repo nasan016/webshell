@@ -198,4 +198,8 @@ a:hover {
   #input-line {
     margin-left: 8px;
   }
+
+  #bars {
+    text-align: center;
+  }
 }
