@@ -104,7 +104,7 @@ function arrowKeys(e : string) {
       }      
       break;
     case "ArrowUp":
-      if (historyIdx === HISTORY.length) tempInput = USERINPUT.value
+      if (historyIdx === HISTORY.length) tempInput = USERINPUT.value;
       if (historyIdx !== 0) {
         historyIdx -= 1;
         USERINPUT.value = HISTORY[historyIdx];
@@ -114,6 +114,15 @@ function arrowKeys(e : string) {
 }
 
 function commandHandler(input : string) {
+  if(input.startsWith("rm -rf") && input.trim() !== "rm -rf") {
+    if(input === "rm -rf src") {
+      writeLines(["Oh no. Why would you do that?", "<br>"]);
+    } else {
+      writeLines(["<br>", "Directory not found.", "type <span class='command'>'ls'</span> for a list of directories.", "<br>"]);
+    }
+    return
+  }
+
   switch(input) {
     case 'clear':
       setTimeout(() => {
@@ -144,6 +153,12 @@ function commandHandler(input : string) {
         window.open(REPO_LINK, '_blank');
       }, 500);
       break;
+    case 'rm -rf':
+      writeLines(["Usage: <span class='command'>'rm -rf &lt;dir&gt;'</span>", "<br>"])
+      break;
+    case 'ls':
+      writeLines(["src", "<br>"])
+      break;
     default:
       writeLines(com.DEFAULT);
       break;
@@ -153,7 +168,7 @@ function commandHandler(input : string) {
 function writeLines(message : string[]) {
   message.forEach((item, idx) => {
     displayText(item, idx);
-  }) 
+  });
 }
 
 function displayText(item : string, idx : number) {
