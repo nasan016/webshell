@@ -63,6 +63,9 @@ const helpObj = {
       "'whoami'",
       "A perplexing question."
     ],
+    ["'sudo'",
+      "???"
+    ],
     [
       "'repo'",
       "View the Github Repository."

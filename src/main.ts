@@ -154,7 +154,10 @@ function commandHandler(input : string) {
       }, 500);
       break;
     case 'rm -rf':
-      writeLines(["Usage: <span class='command'>'rm -rf &lt;dir&gt;'</span>", "<br>"])
+      writeLines(["Usage: <span class='command'>'rm -rf &lt;dir&gt;'</span>", "<br>"]);
+      break;
+    case 'sudo':
+      writeLines(["Under Construction...", "<br>"]);
       break;
     case 'ls':
       writeLines(["src", "<br>"])
