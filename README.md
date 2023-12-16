@@ -19,7 +19,43 @@
 <div align="center">
   <img alt="banner" src="https://raw.githubusercontent.com/nasan016/webshell/main/res/secret.png">
 </div>
-What happened here?
+How did we get here?
+
+## Configuration
+
+Most of the configuration is done in the `config.json` file.
+
+```json
+{
+  "ascii": [
+    "██████╗ ██╗   ██╗ ██████╗",
+    "██╔══██╗██║   ██║██╔════╝",
+    "██║  ██║██║   ██║██║  ███╗",
+    "██║  ██║██║   ██║██║   ██║",
+    "██████╔╝╚██████╔╝╚██████╔╝",
+    "╚═════╝  ╚═════╝  ╚═════╝",
+  ],
+  "social": {
+    "email": "dug@pixar.com",
+    "github": "dugfromup",
+    "linkedin": "dugthedog"
+  },
+  "about-greeting": "My name is Dug. I have just met you.",
+  "projects": [
+    [
+      "Project Name",
+      "Project Description",
+      "Project Link"
+    ],
+    [
+      "Another Project Name",
+      "Another Project Description",
+      "Another Project Link"
+    ]
+  ]
+}
+```
+
 ## Run the Project Locally:
 
 Clone the repository

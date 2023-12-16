@@ -1,12 +1,6 @@
+import command from '../config.json' assert {type: 'json'};
+
 const bannerObj = {
-  "ascii": [
-    "███╗   ██╗ █████╗ ███████╗ █████╗ ███╗   ██╗",
-    "████╗  ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║",
-    "██╔██╗ ██║███████║███████╗███████║██╔██╗ ██║",
-    "██║╚██╗██║██╔══██║╚════██║██╔══██║██║╚██╗██║",
-    "██║ ╚████║██║  ██║███████║██║  ██║██║ ╚████║",
-    "╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝",
-  ],
   "greeting": "Welcome to WebShell v1.0.0",
   "repolink": "https://github.com/nasan016/webshell"
 }
@@ -80,42 +74,15 @@ const helpObj = {
   ],
 }
 
-const projectsObj = {
-  "projects": [
-    [
-      "GofeR",
-      "Go",
-      "https://github.com/nasan016/gofer"
-    ],
-    [
-      "WebShell",
-      "TS"
-    ],
-  ]
-}
-
-const aboutObj = {
-  "message": "Hi I'm Nathan. I'm a student at NYU Tandon.",
-  "github": [
-    "github/nasan016",
-    "https://github.com/nasan016",
-  ],
-  "linkedin": [
-    "linkedin/nathanielmacapinlac",
-    "https://www.linkedin.com/in/nathanielmacapinlac/",
-  ],
-  "email": "nlm8841@nyu.edu"
-}
-
 const createProject = () : string[] => {
   let string = "";
   const projects : string[] = [];
-  const files = `${projectsObj.projects.length} File(s)`;
+  const files = `${command.projects.length} File(s)`;
   const SPACE = "&nbsp;";
 
   projects.push("<br>")
 
-  projectsObj.projects.forEach((ele) => {
+  command.projects.forEach((ele) => {
     let link = `<a href="${ele[2]}" target="_blank">${ele[0]}</a>`
     string += SPACE.repeat(2);
     string += link;
@@ -134,7 +101,7 @@ const createProject = () : string[] => {
 const createBanner = () : string[] => {
   const banner : string[] = [];
   banner.push("<br>")
-  bannerObj.ascii.forEach((ele) => {
+  command.ascii.forEach((ele) => {
     let bannerString = "";
     //this is for the ascii art
     for (let i = 0; i < ele.length; i++) {
@@ -151,7 +118,7 @@ const createBanner = () : string[] => {
   banner.push("<br>");
   banner.push(bannerObj.greeting);
   banner.push("Type <span class='command'>'help'</span> for a list of all available commands.");
-  banner.push(`Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='${bannerObj.repolink}' target='_blank'>here</a>.`);
+  banner.push(`Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='${command.repoLink}' target='_blank'>here</a>.`);
   banner.push("<br>");
   return banner;
 }
@@ -202,26 +169,26 @@ const createAbout = () : string[] => {
   let string = "";
 
   about.push("<br>");
-  about.push(aboutObj.message);
+  about.push(command.aboutGreeting);
   about.push("<br>");
   string += SPACE.repeat(2);
   string += email;
   string += SPACE.repeat(17 - EMAIL.length);
-  string += `<a target='_blank' href='mailto:${aboutObj.email}'>${aboutObj.email}</a>`;
+  string += `<a target='_blank' href='mailto:${command.social.email}'>${command.social.email}</a>`;
   about.push(string);
 
   string = '';
   string += SPACE.repeat(2);
   string += github;
   string += SPACE.repeat(17 - GITHUB.length);
-  string += `<a target='_blank' href='${aboutObj.github[1]}'>${aboutObj.github[0]}</a>`;
+  string += `<a target='_blank' href='https://github.com/${command.social.github}'>github/${command.social.github}</a>`;
   about.push(string);
 
   string = '';
   string += SPACE.repeat(2);
   string += linkedin;
   string += SPACE.repeat(17 - LINKEDIN.length);  
-  string += `<a target='_blank' href='${aboutObj.linkedin[1]}'>${aboutObj.linkedin[0]}</a>`;
+  string += `<a target='_blank' href='https://www.linkedin.com/in/${command.social.linkedin}'>linkedin/${command.social.linkedin}</a>`;
   about.push(string);
 
   about.push("<br>");

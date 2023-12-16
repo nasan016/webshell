@@ -1,0 +1,29 @@
+{
+  "ascii": [
+    "███╗   ██╗ █████╗ ███████╗ █████╗ ███╗   ██╗",
+    "████╗  ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║",
+    "██╔██╗ ██║███████║███████╗███████║██╔██╗ ██║",
+    "██║╚██╗██║██╔══██║╚════██║██╔══██║██║╚██╗██║",
+    "██║ ╚████║██║  ██║███████║██║  ██║██║ ╚████║",
+    "╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝"
+  ],
+  "repoLink": "https://github.com/nasan016/webshell",
+  "social": {
+    "email": "nlm8841@nyu.edu",
+    "github": "nasan016",
+    "linkedin": "nathanielmacapinlac"
+  },
+  "aboutGreeting": "Hi I'm Nathan. I'm a student at NYU Tandon.",
+  "projects": [
+    [
+      "GofeR",
+      "Vue.js reactivity in Go.",
+      "https://github.com/nasan016/gofer"
+    ],
+    [
+      "WebShell",
+      "Terminal styled website.",
+      "https://github.com/nasan016/webshell"
+    ]
+  ]
+}
