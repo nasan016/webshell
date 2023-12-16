@@ -35,12 +35,13 @@ Most of the configuration is done in the `config.json` file.
     "██████╔╝╚██████╔╝╚██████╔╝",
     "╚═════╝  ╚═════╝  ╚═════╝",
   ],
+  "repoLink": "https://github.com/nasan016/webshell",
   "social": {
     "email": "dug@pixar.com",
     "github": "dugfromup",
     "linkedin": "dugthedog"
   },
-  "about-greeting": "My name is Dug. I have just met you.",
+  "aboutGreeting": "My name is Dug. I have just met you.",
   "projects": [
     [
       "Project Name",
