@@ -8,6 +8,7 @@ let userInput : string;
 let isSudo = false;
 let isPasswordInput = false;
 let passwordCounter = 0;
+let bareMode = false;
 
 //WRITELINESCOPY is used to during the "clear" command
 const WRITELINESCOPY = mutWriteLines;
@@ -62,8 +63,13 @@ function userInputHandler(e : KeyboardEvent) {
 function enterKey() {
   if (!mutWriteLines || !PROMPT) return
   const resetInput = "";
+  let newUserInput;
   userInput = USERINPUT.value;
-  let newUserInput = `<span class='output'>${userInput}</span>`;
+  if (bareMode) {
+    newUserInput = userInput;
+  } else {
+    newUserInput = `<span class='output'>${userInput}</span>`;
+  }
 
   HISTORY.push(userInput);
   historyIdx = HISTORY.length
@@ -128,10 +134,33 @@ function arrowKeys(e : string) {
 function commandHandler(input : string) {
   if(input.startsWith("rm -rf") && input.trim() !== "rm -rf") {
     if (isSudo) {
-      if(input === "rm -rf src") {
-        writeLines(["Oh no. Why would you do that?", "<br>"]);
-      } else {
-        writeLines(["<br>", "Directory not found.", "type <span class='command'>'ls'</span> for a list of directories.", "<br>"]);
+      if(input === "rm -rf src" && !bareMode) {
+        bareMode = true;
+
+        setTimeout(() => {
+          if(!TERMINAL || !WRITELINESCOPY) return
+          TERMINAL.innerHTML = "";
+          TERMINAL.appendChild(WRITELINESCOPY);
+          mutWriteLines = WRITELINESCOPY;
+        });
+
+        easterEggStyles();
+        setTimeout(() => {
+          writeLines(["What made you think that was a good idea?", "<br>"]);
+        }, 200)
+
+        setTimeout(() => {
+          writeLines(["Now everything is ruined.", "<br>"]);
+        }, 1200)
+
+        } else if (input === "rm -rf src" && bareMode) {
+          writeLines(["there's no more src folder.", "<br>"])
+        } else {
+          if(bareMode) {
+            writeLines(["What else are you trying to delete?", "<br>"])
+          } else {
+            writeLines(["<br>", "Directory not found.", "type <span class='command'>'ls'</span> for a list of directories.", "<br>"]);
+          }
         } 
       } else {
         writeLines(["Permission not granted.", "<br>"]);
@@ -149,18 +178,38 @@ function commandHandler(input : string) {
       })
       break;
     case 'banner':
+      if(bareMode) {
+        writeLines(["WebShell v1.0.0", "<br>"])
+        break;
+      }
       writeLines(com.BANNER);
       break;
     case 'help':
+      if(bareMode) {
+        writeLines(["maybe restarting your browser will fix this.", "<br>"])
+        break;
+      }
       writeLines(com.HELP);
       break;
-    case 'whoami':
+    case 'whoami':      
+      if(bareMode) {
+        writeLines(["guest", "<br>"])
+        break;
+      }
       writeLines(com.WHOAMI());
       break;
     case 'about':
+      if(bareMode) {
+        writeLines(["Nothing to see here.", "<br>"])
+        break;
+      }
       writeLines(com.ABOUT);
       break;
     case 'projects':
+      if(bareMode) {
+        writeLines(["I don't want you to break the other projects.", "<br>"])
+        break;
+      }
       writeLines(com.PROJECTS);
       break;
     case 'repo':
@@ -170,6 +219,11 @@ function commandHandler(input : string) {
       }, 500);
       break;
     case 'rm -rf':
+      if (bareMode) {
+        writeLines(["don't try again.", "<br>"])
+        break;
+      }
+
       if (isSudo) {
         writeLines(["Usage: <span class='command'>'rm -rf &lt;dir&gt;'</span>", "<br>"]);
       } else {
@@ -177,6 +231,10 @@ function commandHandler(input : string) {
       }
         break;
     case 'sudo':
+      if(bareMode) {
+        writeLines(["no.", "<br>"])
+        break;
+      }
       if(!PASSWORD) return
       isPasswordInput = true;
       USERINPUT.disabled = true;
@@ -186,8 +244,14 @@ function commandHandler(input : string) {
       setTimeout(() => {
         PASSWORD_INPUT.focus();
       }, 100);
+
       break;
     case 'ls':
+      if(bareMode) {
+        writeLines(["", "<br>"])
+        break;
+      }
+
       if (isSudo) {
         writeLines(["src", "<br>"]);
       } else {
@@ -195,6 +259,11 @@ function commandHandler(input : string) {
       }
       break;
     default:
+      if(bareMode) {
+        writeLines(["type 'help'", "<br>"])
+        break;
+      }
+
       writeLines(com.DEFAULT);
       break;
   }  
@@ -248,6 +317,34 @@ function passwordHandler() {
     PASSWORD_INPUT.value = "";
     passwordCounter++;
   }
+}
+
+function easterEggStyles() {   
+  const bars = document.getElementById("bars");
+  const body = document.body;
+  const main = document.getElementById("main");
+  const span = document.getElementsByTagName("span");
+
+  if (!bars) return
+  bars.innerHTML = "";
+  bars.remove()
+
+  if (main) main.style.border = "none";
+
+  body.style.backgroundColor = "black";
+  body.style.fontFamily = "VT323, monospace";
+  body.style.fontSize = "20px";
+  body.style.color = "white";
+
+  for (let i = 0; i < span.length; i++) {
+    span[i].style.color = "white";
+  }
+
+  USERINPUT.style.backgroundColor = "black";
+  USERINPUT.style.color = "white";
+  USERINPUT.style.fontFamily = "VT323, monospace";
+  USERINPUT.style.fontSize = "20px";
+
 }
 
 const initEventListeners = () => {
