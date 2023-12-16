@@ -87,6 +87,10 @@ const projectsObj = {
       "Go",
       "https://github.com/nasan016/gofer"
     ],
+    [
+      "WebShell",
+      "TS"
+    ],
   ]
 }
 

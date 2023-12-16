@@ -5,15 +5,22 @@ let mutWriteLines = document.getElementById("write-lines");
 let historyIdx = 0
 let tempInput = ""
 let userInput : string;
+let isSudo = false;
+let isPasswordInput = false;
+let passwordCounter = 0;
 
 //WRITELINESCOPY is used to during the "clear" command
 const WRITELINESCOPY = mutWriteLines;
 const TERMINAL = document.getElementById("terminal");
 const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
+const INPUT_HIDDEN = document.getElementById("input-hidden");
+const PASSWORD = document.getElementById("password-input");
+const PASSWORD_INPUT = document.getElementById("password-field") as HTMLInputElement;
 const PROMPT = document.getElementById("prompt");
 const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
 const REPO_LINK = com.BANNEROBJ.repolink;
 const HISTORY : string[] = [];
+const SUDO_PASSWORD = "050823"
 
 const scrollToBottom = () => {
   const MAIN = document.getElementById("main");
@@ -27,7 +34,12 @@ function userInputHandler(e : KeyboardEvent) {
 
   switch(key) {
     case "Enter":
-      enterKey();
+      if (!isPasswordInput) {
+        enterKey();
+      } else {
+        passwordHandler();
+      }
+
       scrollToBottom();
       break;
     case "Escape":
@@ -115,10 +127,14 @@ function arrowKeys(e : string) {
 
 function commandHandler(input : string) {
   if(input.startsWith("rm -rf") && input.trim() !== "rm -rf") {
-    if(input === "rm -rf src") {
-      writeLines(["Oh no. Why would you do that?", "<br>"]);
-    } else {
-      writeLines(["<br>", "Directory not found.", "type <span class='command'>'ls'</span> for a list of directories.", "<br>"]);
+    if (isSudo) {
+      if(input === "rm -rf src") {
+        writeLines(["Oh no. Why would you do that?", "<br>"]);
+      } else {
+        writeLines(["<br>", "Directory not found.", "type <span class='command'>'ls'</span> for a list of directories.", "<br>"]);
+        } 
+      } else {
+        writeLines(["Permission not granted.", "<br>"]);
     }
     return
   }
@@ -154,13 +170,29 @@ function commandHandler(input : string) {
       }, 500);
       break;
     case 'rm -rf':
-      writeLines(["Usage: <span class='command'>'rm -rf &lt;dir&gt;'</span>", "<br>"]);
-      break;
+      if (isSudo) {
+        writeLines(["Usage: <span class='command'>'rm -rf &lt;dir&gt;'</span>", "<br>"]);
+      } else {
+        writeLines(["Permission not granted.", "<br>"])
+      }
+        break;
     case 'sudo':
-      writeLines(["Under Construction...", "<br>"]);
+      if(!PASSWORD) return
+      isPasswordInput = true;
+      USERINPUT.disabled = true;
+
+      if(INPUT_HIDDEN) INPUT_HIDDEN.style.display = "none";
+      PASSWORD.style.display = "block";
+      setTimeout(() => {
+        PASSWORD_INPUT.focus();
+      }, 100);
       break;
     case 'ls':
-      writeLines(["src", "<br>"])
+      if (isSudo) {
+        writeLines(["src", "<br>"]);
+      } else {
+        writeLines(["Permission not granted.", "<br>"]);
+      }
       break;
     default:
       writeLines(com.DEFAULT);
@@ -184,15 +216,52 @@ function displayText(item : string, idx : number) {
   }, 40 * idx);
 }
 
+function revertPasswordChanges() {
+    if (!INPUT_HIDDEN || !PASSWORD) return
+    PASSWORD_INPUT.value = "";
+    USERINPUT.disabled = false;
+    INPUT_HIDDEN.style.display = "block";
+    PASSWORD.style.display = "none";
+    isPasswordInput = false;
+
+    setTimeout(() => {
+      USERINPUT.focus();
+    }, 100)
+}
+
+function passwordHandler() {
+  if (passwordCounter === 2) {
+    if (!INPUT_HIDDEN || !mutWriteLines || !PASSWORD) return
+    writeLines(["<br>", "INCORRECT PASSWORD.", "PERMISSION NOT GRANTED.", "<br>"])
+    revertPasswordChanges();
+    passwordCounter = 0;
+    return
+  }
+
+  if (PASSWORD_INPUT.value === SUDO_PASSWORD) {
+    if (!mutWriteLines || !mutWriteLines.parentNode) return
+    writeLines(["<br>", "PERMISSION GRANTED.", "Try <span class='command'>'rm -rf'</span>", "<br>"])
+    revertPasswordChanges();
+    isSudo = true;
+    return
+  } else {
+    PASSWORD_INPUT.value = "";
+    passwordCounter++;
+  }
+}
+
 const initEventListeners = () => {
   window.addEventListener('load', () => {
     writeLines(com.BANNER);
     USERINPUT.addEventListener('keydown', userInputHandler);
+    PASSWORD_INPUT.addEventListener('keydown', userInputHandler);
   });
   
   window.addEventListener('click', () => {
     USERINPUT.focus();
   });
+
+  console.log("%cPassword: 050823", "color: red; font-size: 20px;");
 }
 
 initEventListeners();
