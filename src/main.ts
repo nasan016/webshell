@@ -295,7 +295,7 @@ function revertPasswordChanges() {
 
     setTimeout(() => {
       USERINPUT.focus();
-    }, 100)
+    }, 200)
 }
 
 function passwordHandler() {

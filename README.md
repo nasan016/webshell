@@ -15,6 +15,11 @@
 * **[Esc]** to clear the input line.
 * **[↑][↓]** to scroll through your command history.
 
+## ???
+<div align="center">
+  <img alt="banner" src="https://raw.githubusercontent.com/nasan016/webshell/main/res/secret.png">
+</div>
+What happened here?
 ## Run the Project Locally:
 
 Clone the repository
