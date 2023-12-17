@@ -19,7 +19,7 @@ const PASSWORD = document.getElementById("password-input");
 const PASSWORD_INPUT = document.getElementById("password-field") as HTMLInputElement;
 const PROMPT = document.getElementById("prompt");
 const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
-const REPO_LINK = com.repoLink;
+const REPO_LINK = com.REPO_LINK;
 const HISTORY : string[] = [];
 const SUDO_PASSWORD = "050823"
 

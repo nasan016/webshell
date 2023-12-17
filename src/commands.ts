@@ -1,9 +1,6 @@
 import command from '../config.json' assert {type: 'json'};
 
-const bannerObj = {
-  "greeting": "Welcome to WebShell v1.0.0",
-  "repolink": "https://github.com/nasan016/webshell"
-}
+const REPO_LINK = command.repoLink;
 
 const defaultObj = {
   "message": [
@@ -116,7 +113,7 @@ const createBanner = () : string[] => {
     banner.push(eleToPush);
   });  
   banner.push("<br>");
-  banner.push(bannerObj.greeting);
+  banner.push("Welcome to WebShell v1.0.0");
   banner.push("Type <span class='command'>'help'</span> for a list of all available commands.");
   banner.push(`Type <span class='command'>'repo'</span> to view the GitHub repository or click <a href='${command.repoLink}' target='_blank'>here</a>.`);
   banner.push("<br>");
@@ -225,4 +222,4 @@ const HELP = createHelp();
 const ABOUT = createAbout();
 const PROJECTS = createProject();
 
-export { BANNER, DEFAULT, HELP, ABOUT, PROJECTS, createWhoami as WHOAMI, bannerObj as BANNEROBJ } 
+export { BANNER, DEFAULT, HELP, ABOUT, PROJECTS, REPO_LINK, createWhoami as WHOAMI } 
