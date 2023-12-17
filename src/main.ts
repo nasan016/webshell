@@ -19,7 +19,7 @@ const PASSWORD = document.getElementById("password-input");
 const PASSWORD_INPUT = document.getElementById("password-field") as HTMLInputElement;
 const PROMPT = document.getElementById("prompt");
 const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
-const REPO_LINK = com.BANNEROBJ.repolink;
+const REPO_LINK = com.repoLink;
 const HISTORY : string[] = [];
 const SUDO_PASSWORD = "050823"
 
@@ -35,6 +35,9 @@ function userInputHandler(e : KeyboardEvent) {
 
   switch(key) {
     case "Enter":
+    case "Go":
+    case "Next":
+      e.preventDefault()
       if (!isPasswordInput) {
         enterKey();
       } else {
