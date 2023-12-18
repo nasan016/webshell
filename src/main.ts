@@ -1,4 +1,10 @@
-import * as com from "./commands";
+import command from '../config.json' assert {type: 'json'};
+import { HELP } from "./commands/help";
+import { BANNER } from "./commands/banner";
+import { ABOUT } from "./commands/about"
+import { DEFAULT } from "./commands/default";
+import { PROJECTS } from "./commands/projects";
+import { createWhoami } from "./commands/whoami";
 
 //mutWriteLines gets deleted and reassigned
 let mutWriteLines = document.getElementById("write-lines");
@@ -19,9 +25,9 @@ const PASSWORD = document.getElementById("password-input");
 const PASSWORD_INPUT = document.getElementById("password-field") as HTMLInputElement;
 const PROMPT = document.getElementById("prompt");
 const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
-const REPO_LINK = com.REPO_LINK;
 const HISTORY : string[] = [];
-const SUDO_PASSWORD = "050823"
+const SUDO_PASSWORD = "050823";
+const REPO_LINK = command.repoLink;
 
 const scrollToBottom = () => {
   const MAIN = document.getElementById("main");
@@ -185,35 +191,35 @@ function commandHandler(input : string) {
         writeLines(["WebShell v1.0.0", "<br>"])
         break;
       }
-      writeLines(com.BANNER);
+      writeLines(BANNER);
       break;
     case 'help':
       if(bareMode) {
         writeLines(["maybe restarting your browser will fix this.", "<br>"])
         break;
       }
-      writeLines(com.HELP);
+      writeLines(HELP);
       break;
     case 'whoami':      
       if(bareMode) {
         writeLines(["guest", "<br>"])
         break;
       }
-      writeLines(com.WHOAMI());
+      writeLines(createWhoami());
       break;
     case 'about':
       if(bareMode) {
         writeLines(["Nothing to see here.", "<br>"])
         break;
       }
-      writeLines(com.ABOUT);
+      writeLines(ABOUT);
       break;
     case 'projects':
       if(bareMode) {
         writeLines(["I don't want you to break the other projects.", "<br>"])
         break;
       }
-      writeLines(com.PROJECTS);
+      writeLines(PROJECTS);
       break;
     case 'repo':
       writeLines(["Redirecting to github.com...", "<br>"]);
@@ -267,7 +273,7 @@ function commandHandler(input : string) {
         break;
       }
 
-      writeLines(com.DEFAULT);
+      writeLines(DEFAULT);
       break;
   }  
 }
@@ -352,7 +358,7 @@ function easterEggStyles() {
 
 const initEventListeners = () => {
   window.addEventListener('load', () => {
-    writeLines(com.BANNER);
+    writeLines(BANNER);
     USERINPUT.addEventListener('keydown', userInputHandler);
     PASSWORD_INPUT.addEventListener('keydown', userInputHandler);
   });
