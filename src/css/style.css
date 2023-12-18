@@ -191,6 +191,10 @@ a:hover {
     border-width: 1px;
   }
 
+  div {
+    line-height: 14px;
+  }
+
   #terminal {
     margin-left: 8px;
   }

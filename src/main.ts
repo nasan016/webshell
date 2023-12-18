@@ -74,6 +74,7 @@ function enterKey() {
   const resetInput = "";
   let newUserInput;
   userInput = USERINPUT.value;
+
   if (bareMode) {
     newUserInput = userInput;
   } else {
@@ -226,6 +227,15 @@ function commandHandler(input : string) {
       setTimeout(() => {
         window.open(REPO_LINK, '_blank');
       }, 500);
+      break;
+    case 'linkedin':
+      //add stuff here
+      break;
+    case 'github':
+      //add stuff here
+      break;
+    case 'email':
+      //add stuff here
       break;
     case 'rm -rf':
       if (bareMode) {
