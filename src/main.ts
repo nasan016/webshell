@@ -31,7 +31,7 @@ const scrollToBottom = () => {
 }
 
 function userInputHandler(e : KeyboardEvent) {
-  const key = e.code;
+  const key = e.key;
 
   switch(key) {
     case "Enter":
