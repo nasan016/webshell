@@ -10,6 +10,8 @@
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
+Create your own terminal styled website! Check out [nasan.dev](https://www.nasan.dev/) for an example.
+
 ## Features
 * **[Tab]** for auto completion.
 * **[Esc]** to clear the input line.
@@ -35,6 +37,10 @@ Most of the configuration is done in the `config.json` file.
     "██████╔╝╚██████╔╝╚██████╔╝",
     "╚═════╝  ╚═════╝  ╚═════╝",
   ],
+  "title": "Dug's Terminal",
+  "username": "guest",
+  "hostname": "dug.dev",
+  "password": "squirrel",
   "repoLink": "https://github.com/nasan016/webshell",
   "social": {
     "email": "dug@pixar.com",
@@ -53,7 +59,10 @@ Most of the configuration is done in the `config.json` file.
       "Another Project Description",
       "Another Project Link"
     ]
-  ]
+  ],
+  "colors": {
+      ...
+  }
 }
 ```
 

@@ -365,6 +365,7 @@ function easterEggStyles() {
   USERINPUT.style.color = "white";
   USERINPUT.style.fontFamily = "VT323, monospace";
   USERINPUT.style.fontSize = "20px";
+  if (PROMPT) PROMPT.style.color = "white";
 
 }
 
