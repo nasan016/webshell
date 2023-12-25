@@ -23,10 +23,7 @@
     <br>
     <div id="terminal">
       <div>
-        <span id="prompt"><span style="color: var(--prompt-1)">guest</span><span
-            style="color: var(--prompt-default)">@</span><span style="color: var(--prompt-2)">nasan.dev</span><span
-            style="color: var(--prompt-default)">:$ ~</span>
-        </span>
+        <span id="prompt"><span id="pre-user"></span>@<span id="pre-host"></span>:$ ~ </span>
       </div>
       <!-- command output will be inserted before #write-lines-->
       <a id="write-lines"></a>
@@ -36,11 +33,10 @@
         <p id="password-input" style="display: none;">Password: <input id="password-field" autocomplete="off"
             type="password" /></p>
         <p id="input-hidden">
-          <span id="prompt"><span style="color: var(--prompt-1)">guest</span><span
-              style="color: var(--prompt-default)">@</span><span style="color: var(--prompt-2)">nasan.dev</span><span
-              style="color: var(--prompt-default)">:$ ~</span>
+          <span id="prompt"><span id="user"></span>@<span id="host"></span>:$ ~
           </span>
-          <input id="user-input" spellcheck="false" autocapitalize="none" autocomplete="off" />
+          <input id="user-input" type="text" enterkeyhint="Enter" spellcheck="false" autocapitalize="none"
+            autocomplete="off" />
         </p>
       </div>
       <br>
@@ -48,6 +44,7 @@
   </main>
 </body>
 
+<script type="module" src="./src/styles.ts"></script>
 <script type="module" src="./src/main.ts"></script>
 
 </html>

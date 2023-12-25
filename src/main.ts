@@ -23,10 +23,14 @@ const USERINPUT = document.getElementById("user-input") as HTMLInputElement;
 const INPUT_HIDDEN = document.getElementById("input-hidden");
 const PASSWORD = document.getElementById("password-input");
 const PASSWORD_INPUT = document.getElementById("password-field") as HTMLInputElement;
+const PRE_HOST = document.getElementById("pre-host");
+const PRE_USER = document.getElementById("pre-user");
+const HOST = document.getElementById("host");
+const USER = document.getElementById("user");
 const PROMPT = document.getElementById("prompt");
 const COMMANDS = ["help", "about", "projects", "whoami", "repo", "banner", "clear"];
 const HISTORY : string[] = [];
-const SUDO_PASSWORD = "050823";
+const SUDO_PASSWORD = command.password;
 const REPO_LINK = command.repoLink;
 
 const scrollToBottom = () => {
@@ -37,13 +41,11 @@ const scrollToBottom = () => {
 }
 
 function userInputHandler(e : KeyboardEvent) {
-  const key = e.code;
+  const key = e.key;
 
   switch(key) {
     case "Enter":
-    case "Go":
-    case "Next":
-      e.preventDefault()
+      e.preventDefault();
       if (!isPasswordInput) {
         enterKey();
       } else {
@@ -93,7 +95,7 @@ function enterKey() {
   }
 
   const div = document.createElement("div");
-  div.innerHTML = `${PROMPT.innerHTML} ${newUserInput}`;
+  div.innerHTML = `<span id="prompt">${PROMPT.innerHTML}</span> ${newUserInput}`;
 
   if (mutWriteLines.parentNode) {
     mutWriteLines.parentNode.insertBefore(div, mutWriteLines);
@@ -203,7 +205,7 @@ function commandHandler(input : string) {
       break;
     case 'whoami':      
       if(bareMode) {
-        writeLines(["guest", "<br>"])
+        writeLines([`${command.username}`, "<br>"])
         break;
       }
       writeLines(createWhoami());
@@ -367,17 +369,35 @@ function easterEggStyles() {
 }
 
 const initEventListeners = () => {
-  window.addEventListener('load', () => {
+  if(HOST) {
+    HOST.innerText= command.hostname;
+  }
+
+  if(USER) {
+    USER.innerText = command.username;
+  }
+
+  if(PRE_HOST) {
+    PRE_HOST.innerText= command.hostname;
+  }
+
+  if(PRE_USER) {
+    PRE_USER.innerText = command.username;
+  } 
+
+    window.addEventListener('load', () => {
     writeLines(BANNER);
-    USERINPUT.addEventListener('keydown', userInputHandler);
-    PASSWORD_INPUT.addEventListener('keydown', userInputHandler);
   });
   
+  USERINPUT.addEventListener('keypress', userInputHandler);
+  USERINPUT.addEventListener('keydown', userInputHandler);
+  PASSWORD_INPUT.addEventListener('keypress', userInputHandler);
+
   window.addEventListener('click', () => {
     USERINPUT.focus();
   });
 
-  console.log("%cPassword: 050823", "color: red; font-size: 20px;");
+  console.log(`%cPassword: ${command.password}`, "color: red; font-size: 20px;");
 }
 
 initEventListeners();
